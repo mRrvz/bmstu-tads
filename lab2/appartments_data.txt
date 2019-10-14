@@ -1,0 +1,501 @@
+500
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 2 96452 0 2019 1 3 0
+Chepo Rigney 618 464 22 8 33239 1 1
+Ronald Trump 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Malloc Callocovich 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Mishgun Nintendo 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 0
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 2 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 2 96452 1 0
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Zhuyang Elgar 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 1
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 8 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Zhuyang Elgar 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 1
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 8 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Zhuyang Elgar 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 1
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 8 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Zhuyang Elgar 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 1
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 8 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Zhuyang Elgar 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 1
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 8 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Zhuyang Elgar 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 1
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 8 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Zhuyang Elgar 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 1
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 8 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Zhuyang Elgar 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 1
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 8 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1
+Citasuk Division 342 313 831 5 307971 1 1
+Zhuyang Elgar 489 61 29 6 395575 1 0
+Cimanggu Sunbrook 81 943 64 15 798875 1 1
+Kaedi Mockingbird 501 729 401 11 710508 1 0
+La_Palma Hintze 273 7 70 13 207017 1 0
+Yafan Division 61 196 72 5 64613 1 0
+Powassan Fair 692 612 717 6 631441 1 1
+Ciakar Westend 220 567 207 10 907373 1 0
+Sishilichen Melody 2 71 810 2 357801 1 0
+Guzhu Holmberg 539 337 106 2 703001 0 1958 6 12 1
+Conima Lunder 142 297 5 1 524803 0 1967 9 15 0
+Dromiskin Dawn 88 514 852 13 774770 0 1952 16 7 1
+Tyazhinskiy Dayton 119 688 720 9 98668 0 1911 16 13 1
+Monastyri Harbort 108 285 182 6 88664 0 1968 11 3 0
+Naebugis Sullivan 101 685 967 12 733670 0 2004 15 3 1
+Zhongmen Hayes 688 896 757 12 825531 0 2008 20 8 0
+Graneros Shore 63 174 771 7 636498 0 1912 19 11 1
+Meishan Blaine 640 93 582 8 939459 0 1909 12 14 0
+Comalapa Ridgeway 653 887 283 9 781927 0 1969 5 2 0
+Moscow Basmannaya 265 994 101 8 867894 0 1959 8 8 0
+Shizuishan Line 57 797 531 14 649533 0 1906 8 5 0
+Shihuiyao Donald 881 333 612 7 285324 0 2001 15 6 0
+Novopokrovsk Maple 762 282 560 6 781491 0 1948 8 8 1
+Yaodian Bashford 845 279 808 13 493976 0 2010 1 15 0
+Cair Springs 228 807 333 15 447759 0 1938 4 15 0
+Gomunice Ridge 143 332 203 7 869294 0 1997 11 1 0
+San_Vicente Marcy 270 268 807 11 828945 0 2016 10 11 0
+Delgado Loftsgordon 75 94 205 6 254778 1 1
+Moscow Basmannaya 265 994 121 8 867894 0 1959 8 8 0
+Delgado Loftsgordon 75 94 215 6 254778 1 1
+Las_Palmas Huxley 396 655 852 1 504261 1 1
+Pashmul Mockin 15 485 659 2 355983 1 1
+Ono-hara Drewry 344 953 959 8 476622 1 0
+Wangliao Sundown 266 620 141 14 96452 1 1
+Chepo Rigney 618 464 22 8 33239 1 1
+Kumbo Canary 817 744 300 2 132637 1 1
+Huangrangping Linden 7 34 183 7 252293 1 1
+Krokeaí Raven 990 109 80 5 500076 1 0
+Mao Garrison 959 512 270 3 193149 1 1
+Delgado Loftsgordon 75 94 25 6 254778 1 1

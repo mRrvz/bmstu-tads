@@ -1,0 +1,8 @@
+7 7
+XXXXXXX
+X    0X
+X XXXXX
+X X   X
+XXX   X
+X X  1X
+XXXXXXX
