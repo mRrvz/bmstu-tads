@@ -281,25 +281,23 @@ static double filling_time(queue_t *queue)
 int queue_processing(queue_t *fst_queue, queue_t *snd_queue, int *fst_out_counter, double *downtime)
 {
     srand(time(NULL));
-    bool printed = false;
+    bool printed = true;
     double last_time = 0;
-    int total_out = 0;
+    int total_out = 0, avg_fst_queue = 0, avg_snd_queue = 0;
 
     while (total_out < NEED_TOTAL_OUT)
     {
         in_queue(fst_queue, fst_queue->size + snd_queue->size);
         bool is_out_fst = is_out(P1);
         last_time = filling_time(fst_queue);
+        avg_fst_queue += fst_queue->size;
+        (*fst_out_counter)++;
 
-        if (!(total_out % 100) && total_out && !printed)
+        if (!(total_out % 100) && !printed)
         {
-            print_interim_results(*fst_queue, *snd_queue, total_out);
+            print_interim_results(*fst_queue, *snd_queue, total_out,
+                avg_fst_queue / (int)fst_queue->total_time, avg_snd_queue / (int)snd_queue->total_time);
             printed = true;
-        }
-
-        if (is_out_fst)
-        {
-            (*fst_out_counter)++;
         }
 
         if (is_out_fst || !fst_queue->size)
@@ -308,6 +306,19 @@ int queue_processing(queue_t *fst_queue, queue_t *snd_queue, int *fst_out_counte
             in_queue(fst_queue, fst_queue->size + snd_queue->size);
             filling_time(snd_queue);
             bool is_out_snd = is_out(P2);
+            avg_snd_queue += fst_queue->size;
+
+            is_out_fst = is_out(P1);
+            last_time = filling_time(fst_queue);
+            if (is_out_fst)
+            {
+                to_next_queue(fst_queue, snd_queue);
+            }
+            else
+            {
+                flg = true;
+                to_beginning_queue(fst_queue);
+            }
 
             if (is_out_snd)
             {

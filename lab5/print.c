@@ -11,9 +11,10 @@ void print_result(const queue_t fst_queue, const queue_t snd_queue,
     printf("Средняя время пребывания заявок в очереди: %d\n", 228);
 }
 
-void print_interim_results(const queue_t fst_queue, const queue_t snd_queue, const int total_out)
+void print_interim_results(const queue_t fst_queue, const queue_t snd_queue,
+    const int total_out, const int avg_fst, const int avg_snd)
 {
     printf("Через О2 вышло %d заявок.\n", total_out);
-    printf("Текущий размер первой очереди: %d\nСредний размер первой очереди: %d\n\n", fst_queue.size, 0);
-    printf("Текущий размер второй очереди: %d\nСредний размер второй: %d\n\n", snd_queue.size, 0);
+    printf("Текущий размер первой очереди: %d\nСредний размер первой очереди: %d\n\n", fst_queue.size, avg_fst);
+    printf("Текущий размер второй очереди: %d\nСредний размер второй: %d\n\n", snd_queue.size, avg_snd);
 }
