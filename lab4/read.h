@@ -15,4 +15,6 @@ int read_add_info(int *count, int curr_stack);
 
 int read_delete_info(int *count, int curr_stack);
 
+int read_struct(int *i);
+
 #endif

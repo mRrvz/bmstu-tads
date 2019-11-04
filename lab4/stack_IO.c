@@ -11,50 +11,60 @@
 
 #define ADD 1
 #define DELETE 2
-#define PRINT 3
+#define RANDOM 3
+#define PRINT 4
 
 #define OK 0
 #define STACK_EMPTY 7
 
 extern int __stack_type;
 
-static void random_filling(stack_array_t *array, stack_list_t *list, int count,
+static int random_filling(stack_array_t *array, stack_list_t *list, int count,
     int64_t *array_time, int64_t *list_time)
 {
-    srand(time(NULL));
     int64_t start_time;
+    int rand_i;
 
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        int rand_i = rand() % 100;
-        int rand_j = rand() % 100;
-        int rand_dir = rand() % 4;
+        printf("Вы можете ввести ещё %d элементов.\n", 10000 - i);
+        if (read_struct(&rand_i))
+        {
+            return 1;
+        }
+
+        if (rand_i == -1)
+        {
+            return OK;
+        }
 
         __stack_type = 0;
 
         start_time = tick();
-        push(array, list, rand_i, rand_j, rand_dir);
+        push(array, list, rand_i, 0, 0);
         *list_time += tick() - start_time;
 
         __stack_type = 1;
 
         start_time = tick();
-        push(array, list, rand_i, rand_j, rand_dir);
+        push(array, list, rand_i, 0, 0);
         *array_time += tick() - start_time;
     }
+
+    return OK;
 }
 
 static int add_to_stack(stack_array_t *array, stack_list_t *list)
 {
-    int code_error, count;
+    int count = 0;
     int64_t array_time = 0, list_time = 0;
 
-    if ((code_error = read_add_info(&count, array->size)))
+    if (random_filling(array, list, count, &array_time, &list_time))
     {
-        return code_error;
+        fprintf(stderr, "Некорректный ввод.\n");
+        return 1;
     }
 
-    random_filling(array, list, count, &array_time, &list_time);
     print_results(array_time, list_time);
     print_memory_results(array->size);
 
@@ -109,13 +119,48 @@ static void __print_stack(stack_array_t *array, stack_list_t *list)
     int64_t array_time = 0, list_time = 0;
 
     print_sample_stack(*list, *array, stdout, &array_time, &list_time);
+    //print_results(array_time, list_time);
+    print_memory_results(array->size);
+}
+
+static int go_random(stack_array_t *array, stack_list_t *list)
+{
+    srand(time(NULL));
+    int64_t start_time, list_time = 0, array_time = 0;
+    int rand_i, count = 0;
+
+    if (read_add_info(&count, array->size))
+    {
+        return 1;
+    }
+
+    for (int i = 0; i < count; i++)
+    {
+        rand_i = rand() % 100;
+
+        __stack_type = 0;
+
+        start_time = tick();
+        push(array, list, rand_i, 0, 0);
+        list_time += tick() - start_time;
+
+        __stack_type = 1;
+
+        start_time = tick();
+        push(array, list, rand_i, 0, 0);
+        array_time += tick() - start_time;
+    }
+
     print_results(array_time, list_time);
     print_memory_results(array->size);
+
+    return OK;
 }
 
 int stack_samples(stack_array_t *array, stack_list_t *list)
 {
     int code_error, action;
+    array->size =0;
 
     while (true)
     {
@@ -137,6 +182,14 @@ int stack_samples(stack_array_t *array, stack_list_t *list)
             case DELETE:
 
                 if ((code_error = delete_from_stack(array, list)))
+                {
+                    return code_error;
+                }
+
+                break;
+            case RANDOM:
+
+                if ((code_error = go_random(array, list)))
                 {
                     return code_error;
                 }

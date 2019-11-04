@@ -163,8 +163,9 @@ int read_stack_action(int *action)
 {
     puts("\n1. Добавить элементы в стек.\n"
         "2. Удалить элементы из стека.\n"
-        "3. Вывести текущее состояние стеков\n"
-        "4. Выйти из программы.\n"
+        "3. Добавить случайные элементы в стек.\n"
+        "4. Вывести текущее состояние стека\n"
+        "5. Выйти из программы.\n"
         "Выберите пункт меню: ");
 
     if (scanf("%d", action) != READ_OK)
@@ -218,6 +219,17 @@ int read_delete_info(int *count, int curr_stack)
     if (*count <= 0 || *count > curr_stack)
     {
         fprintf(stderr, "Ошибка: некорректный ввода количества удаляемых элементов.\n");
+        return INVALID_INPUT;
+    }
+
+    return OK;
+}
+
+int read_struct(int *i)
+{
+    puts("Введите элемент стека. Введите -1, если хотите закончить ввод: ");
+    if (scanf("%d", i) != READ_OK)
+    {
         return INVALID_INPUT;
     }
 
