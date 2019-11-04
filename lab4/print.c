@@ -72,6 +72,11 @@ void print_stack(const stack_list_t list, const stack_array_t array, FILE *f,
     fprintf(f, "%s", "\n\n");
 }
 
+static void print_struct(const int i, const int j, const int dir)
+{
+    printf("Элемент стека: %d\n", i);
+}
+
 void print_sample_stack(const stack_list_t list, const stack_array_t array, FILE *f,
     int64_t *array_time, int64_t *list_time)
 {
@@ -85,22 +90,29 @@ void print_sample_stack(const stack_list_t list, const stack_array_t array, FILE
     }
 
     fprintf(f, "Текущий размер стека: %d\n", array.size);
-    fprintf(f, "%s", "\nСтек, реализованный массивом: \n\n");
+    //fprintf(f, "%s", "\nСтек, реализованный массивом: \n\n");
 
     start_time = tick();
+    /*
     for (int i = array.size - 1; i >= 0; i--)
     {
-        fprintf(f, "%p\n", (array.ptr + i));
+        fprintf(f, "Адрес: %p\n", (array.ptr + i));
+        print_struct(temp->i, temp->j, temp->direction);
+        temp = temp->next_elem;
     }
+    */
 
     *array_time += tick() - start_time;
 
-    fprintf(f, "%s", "\nСтек, реализованный списком: \n\n");
+    fprintf(f, "%s", "\nСтек, реализованный списком: \n");
+
+    temp = list.ptr;
 
     start_time = tick();
     while (temp != NULL)
     {
-        fprintf(f, "%p\n", temp);
+        fprintf(f, "\nАдрес: %p\n", temp);
+        print_struct(temp->i, temp->j, temp->direction);
         temp = temp->next_elem;
     }
 
@@ -115,6 +127,13 @@ void print_results(int64_t array_time, int64_t list_time)
 
 void print_memory_results(const int size)
 {
+    if (!size)
+    {
+        printf("Память, занимаемая массивом: %lu\nПамять, занимаемая списком:  %lu\n",
+            size * sizeof(int), 2 * size * sizeof(int));
+        return;
+    }
+
     printf("Память, занимаемая массивом: %lu\nПамять, занимаемая списком:  %lu\n",
-        size * sizeof(array_element_t), size * sizeof(list_element_t));
+        size * sizeof(int), 2 * size * sizeof(int) + size * sizeof(list_element_t *));
 }

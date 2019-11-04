@@ -27,7 +27,7 @@ int list_push(stack_list_t *list, const int i, const int j, const int direction)
 {
     list_element_t *new_peak = NULL;
 
-    if ((new_peak = calloc(1, sizeof(list_element_t))) == NULL)
+    if ((new_peak = malloc(sizeof(list_element_t))) == NULL)
     {
         return MEMORY_ERROR;
     }
