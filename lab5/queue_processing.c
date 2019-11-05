@@ -109,6 +109,11 @@ static void out_queue(queue_t *queue)
         //print_node(*queue);
     #endif
 
+    if (!queue->size)
+    {
+        return;
+    }
+
     node_t *last = queue->list.list_head;
     node_t *prev = NULL;
     while (last->next_node != NULL)
@@ -282,65 +287,40 @@ int queue_processing(queue_t *fst_queue, queue_t *snd_queue, int *fst_out_counte
 {
     srand(time(NULL));
     bool printed = true;
-    double last_time = 0;
+    double fst_queue_time = 0, snd_queue_time = 0;
     int total_out = 0, avg_fst_queue = 0, avg_snd_queue = 0;
 
     while (total_out < NEED_TOTAL_OUT)
     {
         in_queue(fst_queue, fst_queue->size + snd_queue->size);
-        bool is_out_fst = is_out(P1);
-        last_time = filling_time(fst_queue);
-        avg_fst_queue += fst_queue->size;
-        (*fst_out_counter)++;
+        fst_queue_time = filling_time(fst_queue);
 
-        if (!(total_out % 100) && !printed)
-        {
-            print_interim_results(*fst_queue, *snd_queue, total_out,
-                avg_fst_queue / (int)fst_queue->total_time, avg_snd_queue / (int)snd_queue->total_time);
-            printed = true;
-        }
-
-        if (is_out_fst || !fst_queue->size)
+        if (is_out(P1))
         {
             to_next_queue(fst_queue, snd_queue);
-            in_queue(fst_queue, fst_queue->size + snd_queue->size);
-            filling_time(snd_queue);
-            bool is_out_snd = is_out(P2);
-            avg_snd_queue += fst_queue->size;
+        }
+        else
+        {
+            to_beginning_queue(fst_queue);
+        }
 
-            is_out_fst = is_out(P1);
-            last_time = filling_time(fst_queue);
-            if (is_out_fst)
+        snd_queue_time = filling_time(snd_queue);
+        if (is_out(P2))
+        {
+            if (!snd_queue->size)
             {
-                to_next_queue(fst_queue, snd_queue);
+                *downtime += fst_queue_time;
             }
             else
             {
-                flg = true;
-                to_beginning_queue(fst_queue);
-            }
-
-            if (is_out_snd)
-            {
-                total_out++;
-                printed = false;
                 out_queue(snd_queue);
-            }
-            else
-            {
-                to_beginning_queue(snd_queue);
+                total_out++;
             }
         }
         else
         {
-            if (!snd_queue->size)
-            {
-                *downtime += last_time;
-            }
-
-            to_beginning_queue(fst_queue);
+            to_beginning_queue(snd_queue);
         }
-
 
         #ifdef DEBUG
             puts("FIRST QUEUE: \n");
