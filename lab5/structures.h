@@ -11,6 +11,7 @@ typedef struct node
 {
     int person_id;
     double time_service;
+    double total_time;
     struct node *next_node;
 } node_t;
 
@@ -23,6 +24,7 @@ typedef struct arr_elem
 {
     int person_id;
     double time_service;
+    double total_time;
 } array_element_t;
 
 typedef struct queue_arr

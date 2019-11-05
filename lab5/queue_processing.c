@@ -4,6 +4,7 @@
 
 #include "queue_processing.h"
 #include "timer.h"
+#include "print.h"
 
 //#define DEBUG
 #define MAX_QUEUE 100
@@ -102,7 +103,7 @@ static void in_queue(queue_t *queue, const int size)
     queue->size++;
 }
 
-static void out_queue(queue_t *queue)
+static void out_queue(queue_t *queue, double *const avg_time)
 {
     #ifdef DEBUG
         printf("%s ENTER: \n", __func__);
@@ -122,6 +123,7 @@ static void out_queue(queue_t *queue)
         last = last->next_node;
     }
 
+    *avg_time += last->total_time;
     free(last);
 
     if (prev != NULL)
@@ -222,14 +224,10 @@ static void to_next_queue(queue_t *fst_queue, queue_t *snd_queue)
         fst_queue->list.list_head = NULL;
     }
 
-    //array_element_t temp = *(fst_queue->arr.start);
-    //printf("%p DO\n", snd_queue->arr.start);
-    //printf("%p POSLE\n", snd_queue->arr.start);
     if (IS_BEGIN)
     {
         snd_queue->arr.start = snd_queue->arr.start - 1;
     }
-
     *snd_queue->arr.start = *(fst_queue->arr.end);
 
     if (fst_queue->arr.end != fst_queue->arr.start_initial)
@@ -278,31 +276,33 @@ static double filling_time(queue_t *queue)
     }
 
     temp->time_service = service_time;
+    temp->total_time += service_time;
     queue->total_time += service_time;
 
     return service_time;
 }
 
-int queue_processing(queue_t *fst_queue, queue_t *snd_queue, int *fst_out_counter, double *downtime)
+int queue_processing(queue_t *fst_queue, queue_t *snd_queue,
+    int *const fst_out_counter, double *const downtime, double *const avg_in_queue)
 {
     srand(time(NULL));
     bool printed = true, repeat_fst = false;
     double fst_queue_time = 0, snd_queue_time = 0;
-    int total_out = 0, avg_fst = 1, avg_snd = 1;
+    double avg_fst = 0, avg_snd = 0;
+    int total_out = 0;
 
     while (total_out < NEED_TOTAL_OUT)
     {
         in_queue(fst_queue, fst_queue->size + snd_queue->size);
         fst_queue_time = filling_time(fst_queue);
-        fst_queue->total_time += fst_queue_time;
-        avg_fst += fst_queue->size;
+        avg_fst += fst_queue_time * fst_queue->size;
+        repeat_fst = false;
 
         if (!(total_out % 100) && !printed)
         {
-            printf("%d ", (int)fst_queue->total_time);
             print_interim_results(*fst_queue, *snd_queue, total_out,
-                                (int)fst_queue->total_time / avg_fst,
-                                (int)snd_queue->total_time / avg_snd);
+                                avg_fst / fst_queue->total_time,
+                                avg_snd / snd_queue->total_time);
             printed = true;
         }
 
@@ -315,13 +315,22 @@ int queue_processing(queue_t *fst_queue, queue_t *snd_queue, int *fst_out_counte
 
         is_out(P1) ? to_next_queue(fst_queue, snd_queue) : to_beginning_queue(fst_queue);
         snd_queue_time = filling_time(snd_queue);
-        avg_snd += snd_queue->size;
+        avg_snd += snd_queue_time * snd_queue->size;
+
+        if (snd_queue->size != 0 && repeat_fst)
+        {
+            fst_queue_time = filling_time(fst_queue);
+            is_out(P1) ? to_next_queue(fst_queue, snd_queue) : to_beginning_queue(fst_queue);
+
+            avg_fst += fst_queue_time * fst_queue->size;
+            (*fst_out_counter)++;
+        }
 
         if (is_out(P2))
         {
             if (snd_queue->size)
             {
-                out_queue(snd_queue);
+                out_queue(snd_queue, avg_in_queue);
                 total_out++;
                 printed = false;
             }
@@ -331,20 +340,13 @@ int queue_processing(queue_t *fst_queue, queue_t *snd_queue, int *fst_out_counte
             to_beginning_queue(snd_queue);
         }
 
-        if (!snd_queue->size && repeat_fst)
-        {
-            fst_queue_time = filling_time(fst_queue);
-            fst_queue->total_time += fst_queue_time;
-            is_out(P1) ? to_next_queue(fst_queue, snd_queue) : to_beginning_queue(fst_queue);
-
-            repeat_fst = false;
-            avg_fst += fst_queue->size;
-            (*fst_out_counter)++;
-        }
-
+        avg_snd += snd_queue_time * snd_queue->size;
         (*fst_out_counter)++;
 
         #ifdef DEBUG
+            printf("TOTAL TIME: %lf - fst, %lf - snd\n",
+            fst_queue->total_time, snd_queue->total_time);
+
             puts("FIRST QUEUE: \n");
             print_node(*fst_queue);
             print_array(*fst_queue);

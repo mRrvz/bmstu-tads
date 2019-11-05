@@ -1,20 +1,22 @@
 #include <stdio.h>
 #include "print.h"
 
+#define AVERAGE_EXPECTED 10000
 
 void print_result(const queue_t fst_queue, const queue_t snd_queue,
-    const int fst_out_counter, const double downtime)
+    const int fst_out_counter, const double downtime, const double avg_time)
 {
     printf("\nОбщее время моделирования: %lf\n", snd_queue.total_time);
     printf("Время простоя О2: %lf\n", downtime);
     printf("Количество срабатываний О1: %d\n", fst_out_counter);
-    printf("Средняя время пребывания заявок в очереди: %d\n", 228);
+    printf("Средняя время пребывания заявок в очередях: %lf\n", avg_time / 1000);
+    printf("Ожидаемое время моделирования: %d\n", AVERAGE_EXPECTED);
 }
 
 void print_interim_results(const queue_t fst_queue, const queue_t snd_queue,
-    const int total_out, const int avg_fst, const int avg_snd)
+    const int total_out, const double avg_fst, const double avg_snd)
 {
     printf("Через О2 вышло %d заявок.\n", total_out);
-    printf("Текущий размер первой очереди: %d\nСредний размер первой очереди: %d\n\n", fst_queue.size, avg_fst);
-    printf("Текущий размер второй очереди: %d\nСредний размер второй: %d\n\n", snd_queue.size, avg_snd);
+    printf("Текущий размер первой очереди: %d\nСредний размер первой очереди: %lf\n\n", fst_queue.size, avg_fst);
+    printf("Текущий размер второй очереди: %d\nСредний размер второй: %lf\n\n", snd_queue.size, avg_snd);
 }
