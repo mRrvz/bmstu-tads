@@ -286,41 +286,63 @@ static double filling_time(queue_t *queue)
 int queue_processing(queue_t *fst_queue, queue_t *snd_queue, int *fst_out_counter, double *downtime)
 {
     srand(time(NULL));
-    bool printed = true;
+    bool printed = true, repeat_fst = false;
     double fst_queue_time = 0, snd_queue_time = 0;
-    int total_out = 0, avg_fst_queue = 0, avg_snd_queue = 0;
+    int total_out = 0, avg_fst = 1, avg_snd = 1;
 
     while (total_out < NEED_TOTAL_OUT)
     {
         in_queue(fst_queue, fst_queue->size + snd_queue->size);
         fst_queue_time = filling_time(fst_queue);
+        fst_queue->total_time += fst_queue_time;
+        avg_fst += fst_queue->size;
 
-        if (is_out(P1))
+        if (!(total_out % 100) && !printed)
         {
-            to_next_queue(fst_queue, snd_queue);
-        }
-        else
-        {
-            to_beginning_queue(fst_queue);
+            printf("%d ", (int)fst_queue->total_time);
+            print_interim_results(*fst_queue, *snd_queue, total_out,
+                                (int)fst_queue->total_time / avg_fst,
+                                (int)snd_queue->total_time / avg_snd);
+            printed = true;
         }
 
+        if (!snd_queue->size)
+        {
+            *downtime += fst_queue_time;
+            snd_queue->total_time += fst_queue_time;
+            repeat_fst = true;
+        }
+
+        is_out(P1) ? to_next_queue(fst_queue, snd_queue) : to_beginning_queue(fst_queue);
         snd_queue_time = filling_time(snd_queue);
+        avg_snd += snd_queue->size;
+
         if (is_out(P2))
         {
-            if (!snd_queue->size)
-            {
-                *downtime += fst_queue_time;
-            }
-            else
+            if (snd_queue->size)
             {
                 out_queue(snd_queue);
                 total_out++;
+                printed = false;
             }
         }
         else
         {
             to_beginning_queue(snd_queue);
         }
+
+        if (!snd_queue->size && repeat_fst)
+        {
+            fst_queue_time = filling_time(fst_queue);
+            fst_queue->total_time += fst_queue_time;
+            is_out(P1) ? to_next_queue(fst_queue, snd_queue) : to_beginning_queue(fst_queue);
+
+            repeat_fst = false;
+            avg_fst += fst_queue->size;
+            (*fst_out_counter)++;
+        }
+
+        (*fst_out_counter)++;
 
         #ifdef DEBUG
             puts("FIRST QUEUE: \n");

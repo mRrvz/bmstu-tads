@@ -5,7 +5,7 @@
 void print_result(const queue_t fst_queue, const queue_t snd_queue,
     const int fst_out_counter, const double downtime)
 {
-    printf("\nОбщее время моделирования: %lf\n", fst_queue.total_time + snd_queue.total_time);
+    printf("\nОбщее время моделирования: %lf\n", snd_queue.total_time);
     printf("Время простоя О2: %lf\n", downtime);
     printf("Количество срабатываний О1: %d\n", fst_out_counter);
     printf("Средняя время пребывания заявок в очереди: %d\n", 228);
