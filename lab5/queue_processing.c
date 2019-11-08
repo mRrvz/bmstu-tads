@@ -6,7 +6,6 @@
 #include "timer.h"
 #include "print.h"
 
-//#define DEBUG
 #define MAX_QUEUE 100
 #define OK 0
 
@@ -23,6 +22,10 @@
 
 #define IS_BEGIN (snd_queue->arr.start != snd_queue->arr.start_initial)
 
+int64_t real_time_list;
+int64_t real_time_array;
+
+#ifdef DEBUG
 static void print_node(queue_t queue)
 {
     node_t *temp = queue.list.list_head;
@@ -68,7 +71,7 @@ static void print_array(queue_t queue)
     putchar('\n');
     putchar('\n');
 }
-
+#endif
 
 static void in_queue(queue_t *queue, const int size)
 {
@@ -82,9 +85,13 @@ static void in_queue(queue_t *queue, const int size)
         return;
     }
 
+    int64_t time_it = tick();
     node_t *new_person = malloc(sizeof(node_t));
     new_person->next_node = queue->list.list_head;
     queue->list.list_head = new_person;
+
+    real_time_list += tick() - time_it;
+    time_it = tick();
 
     if (queue->arr.start != queue->arr.end_initial)
     {
@@ -94,6 +101,8 @@ static void in_queue(queue_t *queue, const int size)
     {
         queue->arr.start = queue->arr.start_initial;
     }
+
+    real_time_array += tick() - time_it;
 
     #ifdef DEBUG
         printf("%s OUT: \n", __func__);
@@ -115,6 +124,8 @@ static void out_queue(queue_t *queue, double *const avg_time)
         return;
     }
 
+    int64_t time_it = tick();
+
     node_t *last = queue->list.list_head;
     node_t *prev = NULL;
     while (last->next_node != NULL)
@@ -135,12 +146,16 @@ static void out_queue(queue_t *queue, double *const avg_time)
         queue->list.list_head = NULL;
     }
 
+    real_time_list += tick() - time_it;
+    time_it = tick();
+
     if (queue->arr.end != queue->arr.start_initial)
     {
         queue->arr.end--;
     }
 
     queue->size--;
+    real_time_array += tick() - time_it;
 
     #ifdef DEBUG
         printf("%s OUT: \n", __func__);
@@ -160,6 +175,7 @@ static void to_beginning_queue(queue_t *queue)
         //print_node(*queue);
     #endif
 
+    int64_t time_it = tick();
     node_t *last = queue->list.list_head;
     node_t *prev = NULL;
     while (last->next_node != NULL)
@@ -176,12 +192,17 @@ static void to_beginning_queue(queue_t *queue)
     last->next_node = queue->list.list_head;
     queue->list.list_head = last;
 
+    real_time_list += tick() - time_it;
+    time_it = tick();
+
     if (queue->arr.end != queue->arr.start_initial)
     {
         queue->arr.end--;
     }
 
     queue->arr.start = queue->arr.end + 1;
+
+    real_time_array += tick() - time_it;
 
     #ifdef DEBUG
         printf("%s OUT: \n", __func__);
@@ -204,6 +225,8 @@ static void to_next_queue(queue_t *fst_queue, queue_t *snd_queue)
         return;
     }
 
+    int64_t time_it = tick();
+
     node_t *last = fst_queue->list.list_head;
     node_t *prev = NULL;
     while (last->next_node != NULL)
@@ -224,6 +247,9 @@ static void to_next_queue(queue_t *fst_queue, queue_t *snd_queue)
         fst_queue->list.list_head = NULL;
     }
 
+    real_time_list += tick() - time_it;
+    time_it = tick();
+
     if (IS_BEGIN)
     {
         snd_queue->arr.start = snd_queue->arr.start - 1;
@@ -234,6 +260,8 @@ static void to_next_queue(queue_t *fst_queue, queue_t *snd_queue)
     {
         fst_queue->arr.end = fst_queue->arr.end - 1;
     }
+
+    real_time_array += tick() - time_it;
 
     fst_queue->size--;
     snd_queue->size++;
@@ -283,13 +311,16 @@ static double filling_time(queue_t *queue)
 }
 
 int queue_processing(queue_t *fst_queue, queue_t *snd_queue,
-    int *const fst_out_counter, double *const downtime, double *const avg_in_queue)
+    int *const fst_out_counter, double *const downtime, double *const avg_in_queue,
+    int64_t *const arr_time, int64_t *const list_time)
 {
     srand(time(NULL));
     bool printed = true, repeat_fst = false;
     double fst_queue_time = 0, snd_queue_time = 0;
     double avg_fst = 0, avg_snd = 0;
     int total_out = 0;
+
+    real_time_array = 0, real_time_list = 0;
 
     while (total_out < NEED_TOTAL_OUT)
     {
@@ -356,6 +387,9 @@ int queue_processing(queue_t *fst_queue, queue_t *snd_queue,
             printf("\n============= %d TOTAL ==============\n", total_out);
         #endif
     }
+
+    *arr_time = real_time_array;
+    *list_time = real_time_list;
 
     return OK;
 }

@@ -3,20 +3,7 @@
 #include "memory_operations.h"
 
 //#define DEBUG
-
-/*
-static void free_list(stack_list_t *list)
-{
-    list_element_t *curr_element = list->ptr;
-
-    while (curr_element != NULL)
-    {
-        list->ptr = curr_element->next_elem;
-        free(curr_element);
-        curr_element = list->ptr;
-    }
-}
-*/
+#define N 100
 
 static void push_to_list(queue_list_t *list, const int id)
 {
@@ -33,7 +20,7 @@ void filling_queue(queue_list_t *list, array_element_t *array, const int size)
 
     for (int i = 0; i < size; i++)
     {
-        array[i].person_id = 100 - i;
+        array[i].person_id = N - i;
         push_to_list(list, (i + 1));
     }
 }
@@ -43,7 +30,7 @@ queue_t new_queue(array_element_t *const array, queue_arr_t *ring_array,
 {
     queue_t queue;
 
-    if (free_elems == 100)
+    if (free_elems == N)
     {
         ring_array->start = array + free_elems - 1;
     }

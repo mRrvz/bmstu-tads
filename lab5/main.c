@@ -3,6 +3,7 @@
 #include "structures.h"
 #include "queue_processing.h"
 #include "memory_operations.h"
+#include "queue_operations.h"
 #include "print.h"
 
 #define N 100
@@ -17,26 +18,37 @@ int main(void)
     queue_arr_t  ring_arr_queue_fst, ring_arr_queue_snd;
     double downtime = 0, avg_in_queue = 0;
     int fst_out_counter = 0;
+    int code_error;
+    int64_t arr_time, list_time;
+    int action;
+
     list_queue_fst.list_head = NULL;
     list_queue_snd.list_head = NULL;
-
-    int code_error;
 
     filling_queue(&list_queue_fst, arr_queue_fst, N);
     queue_t fst_queue = new_queue(arr_queue_fst, &ring_arr_queue_fst, &list_queue_fst, N, 0);
     queue_t snd_queue = new_queue(arr_queue_snd, &ring_arr_queue_snd, &list_queue_snd, N, N);
 
-    if ((code_error = queue_processing(&fst_queue, &snd_queue, &fst_out_counter, &downtime, &avg_in_queue)))
+    if ((code_error = read_action(&action)))
     {
-        //free_queue(fst_queue);
-        //free_queue(snd_queue);
         return code_error;
     }
 
-    print_result(fst_queue, snd_queue, fst_out_counter, downtime, avg_in_queue);
+    if (!action)
+    {
+        if ((code_error = queue_processing(&fst_queue, &snd_queue,
+            &fst_out_counter, &downtime, &avg_in_queue, &arr_time, &list_time)))
+        {
+            return code_error;
+        }
 
-    //free_queue(fst_queue);
-    //free_queue(snd_queue);
+        print_result(fst_queue, snd_queue, fst_out_counter, downtime,
+        avg_in_queue, arr_time, list_time);
+    }
+    else
+    {
+        queue_operations(&snd_queue);
+    }
 
     return OK;
 }

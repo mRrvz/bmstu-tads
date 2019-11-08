@@ -1,11 +1,11 @@
 CFILES := $(wildcard *.c)
-FLAGS := -Wall -std=c99
+FLAGS := -Wall -Werror -std=c99
 
 app.exe: $(patsubst %.c,%.o,$(CFILES))
 	gcc $(FLAGS) -O2 $^ -o $@
 
 DEBUG: $(patsubst %.c,%.o,$(CFILES))
-	gcc $(FLAGS) -ggdb $^ -o app.exe
+	gcc $(FLAGS) -g $^ -o app.exe
 
 run: app.exe
 	./app.exe
