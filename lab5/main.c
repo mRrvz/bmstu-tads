@@ -20,7 +20,7 @@ int main(void)
     int fst_out_counter = 0;
     int code_error;
     int64_t arr_time, list_time;
-    int action;
+    int action, chance;
 
     list_queue_fst.list_head = NULL;
     list_queue_snd.list_head = NULL;
@@ -37,13 +37,13 @@ int main(void)
     if (!action)
     {
         if ((code_error = queue_processing(&fst_queue, &snd_queue,
-            &fst_out_counter, &downtime, &avg_in_queue, &arr_time, &list_time)))
+            &fst_out_counter, &downtime, &avg_in_queue, &arr_time, &list_time, &chance)))
         {
             return code_error;
         }
 
         print_result(fst_queue, snd_queue, fst_out_counter, downtime,
-        avg_in_queue, arr_time, list_time);
+        avg_in_queue, arr_time, list_time, chance);
     }
     else
     {

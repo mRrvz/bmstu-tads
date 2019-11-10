@@ -13,9 +13,9 @@
 #define N 100
 
 static node_t *free_adresses[N * N];
-int64_t arr_time, list_time;
+int64_t arr_time, list_time, narr_time, nlist_time;
 
-static void in_queue(queue_t *queue)
+static void in_queue(queue_t *queue, bool is_random)
 {
     #ifdef DEBUG
         printf("%s ENTER: \n", __func__);
@@ -32,10 +32,17 @@ static void in_queue(queue_t *queue)
         return;
     }
 
-    puts("Введите элемент очереди: ");
-    while ((scanf("%d", &id) != READ_OK))
+    if (!is_random)
     {
-        puts("Некорректный ввод.");
+        puts("Введите элемент очереди: ");
+        while ((scanf("%d", &id) != READ_OK))
+        {
+            puts("Некорректный ввод.");
+        }
+    }
+    else
+    {
+        id = rand() % 100;
     }
 
     int64_t time_it = tick();
@@ -58,6 +65,9 @@ static void in_queue(queue_t *queue)
 
     queue->size++;
     arr_time += tick() - time_it;
+
+    narr_time += arr_time;
+    nlist_time += list_time;
 
     #ifdef DEBUG
         printf("%s OUT: \n", __func__);
@@ -183,6 +193,36 @@ int read_action(int *action)
     return OK;
 }
 
+static void add_n_elements(queue_t *queue)
+{
+    narr_time = 0;
+    nlist_time = 0;
+    int count = 0;
+
+    if (N - queue->size == 0)
+    {
+        puts("Очередь переполнена");
+        return;
+    }
+
+    printf("Вы можете добавить не более %d элементов.\n", N - queue->size);
+
+    scanf("%d", &count);
+    while (count < READ_OK || count > N - queue->size)
+    {
+        puts("Некорректный ввод.");
+        scanf("%d", &count);
+    }
+
+    for (int i = 0; i < count; i++)
+    {
+        in_queue(queue, 1);
+    }
+
+    arr_time = narr_time;
+    list_time = nlist_time;
+}
+
 int queue_operations(queue_t *queue)
 {
     int action = 0, free_size = 0;
@@ -193,7 +233,8 @@ int queue_operations(queue_t *queue)
         "\n1. Добавить элемент в очередь (не более 100 элементов).\n"
         "2. Удалить элемент из очереди.\n"
         "3. Напечатать очередь.\n"
-        "4. Напечатать список освобожденых областей.\n");
+        "4. Напечатать список освобожденых областей.\n"
+        "5. Добавить N элементов в очередь.\n");
 
         if ((scanf("%d", &action) != READ_OK))
         {
@@ -203,7 +244,7 @@ int queue_operations(queue_t *queue)
         switch (action)
         {
             case 1: // add
-                in_queue(queue);
+                in_queue(queue, 0);
                 time_processing(arr_time, list_time);
                 break;
             case 2: //del
@@ -215,6 +256,10 @@ int queue_operations(queue_t *queue)
                 break;
             case 4: //free_memory
                 print_free(free_adresses, free_size);
+                break;
+            case 5:
+                add_n_elements(queue);
+                time_processing(arr_time, list_time);
                 break;
             default:
                 return OK;

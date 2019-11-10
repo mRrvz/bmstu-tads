@@ -1,5 +1,5 @@
 CFILES := $(wildcard *.c)
-FLAGS := -Wall -Werror -std=c99
+FLAGS := -Wall -std=c99
 
 app.exe: $(patsubst %.c,%.o,$(CFILES))
 	gcc $(FLAGS) -O2 $^ -o $@
