@@ -130,6 +130,8 @@ static void print_queue(queue_t queue)
         return;
     }
 
+    printf("Размер очереди: %d\n", queue.size);
+
     puts("Текущее состояние очереди (списком): ");
     while (temp != NULL)
     {
@@ -161,8 +163,8 @@ static void time_processing(const int64_t arr_time, const int64_t list_time)
 
 int read_action(int *action)
 {
-    fprintf(stdout, "Данная программа обрабатывает"
-        "две очереди с помощью кольцевого массива и свяазнного списка.\n");
+    fprintf(stdout, "Данная программа обрабатывает "
+        "две очереди с помощью кольцевого массива и связанного списка.\n");
     fprintf(stdout, "Введите 0, если хотите решить задачу, или 1, если хотите "
         "работать с очередью в ручном режиме: \n");
 

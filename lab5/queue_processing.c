@@ -14,8 +14,8 @@
 #define T2_MIN 1
 #define T2_MAX 8
 
-#define P1 3
-#define P2 7
+#define P1 10
+#define P2 10
 
 #define NEED_TOTAL_OUT 1000
 #define MIN_TO_DEL 2

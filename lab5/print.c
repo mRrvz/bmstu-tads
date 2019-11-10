@@ -3,6 +3,7 @@
 
 #include "print.h"
 
+#define N 100
 #define AVERAGE_EXPECTED 10000
 
 void print_result(const queue_t fst_queue, const queue_t snd_queue,
@@ -16,6 +17,8 @@ void print_result(const queue_t fst_queue, const queue_t snd_queue,
     printf("Ожидаемое время моделирования: %d\n", AVERAGE_EXPECTED);
     printf("Время обработки с помощью массива: %"PRId64" тиков\n", real_time_array);
     printf("Время обработки с помощью списка:  %"PRId64" тиков\n", real_time_list);
+    printf("Размер одной очереди, реализуемой с помощью списка:  %"PRId64"\n", sizeof(node_t) * N);
+    printf("Размер одной очереди, реализуемой с помощью массива: %"PRId64"\n", sizeof(array_element_t) * N);
 }
 
 void print_interim_results(const queue_t fst_queue, const queue_t snd_queue,
