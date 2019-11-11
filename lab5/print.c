@@ -14,7 +14,7 @@ void print_result(const queue_t fst_queue, const queue_t snd_queue,
     const int fst_out_counter, const double downtime, const double avg_time,
     const int64_t real_time_array, const int64_t real_time_list, const int chance)
 {
-    double time1 = 4.5, time2 = 3;
+    double time1 = snd_queue.avg_time, time2 = fst_queue.avg_time;
     double avg_expected_time = (time2 / ((double)chance / 10.0) > time1) ?
         time2 / ((double)chance / 10.0) : time1;
     double total_time = (time2 / ((double)chance / 10.0) > time1) ? fst_queue.total_time : snd_queue.total_time;

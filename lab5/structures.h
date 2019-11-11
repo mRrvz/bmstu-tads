@@ -9,7 +9,6 @@ typedef enum boolean
 
 typedef struct node
 {
-    int person_id;
     double time_service;
     double total_time;
     struct node *next_node;
@@ -22,7 +21,6 @@ typedef struct list
 
 typedef struct arr_elem
 {
-    int person_id;
     double time_service;
     double total_time;
 } array_element_t;
@@ -41,6 +39,7 @@ typedef struct queue
     queue_arr_t arr;
     queue_list_t list;
     double total_time;
+    double avg_time;
 } queue_t;
 
 #endif

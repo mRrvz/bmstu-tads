@@ -2,14 +2,11 @@
 #include <stdlib.h>
 #include "memory_operations.h"
 
-//#define DEBUG
 #define N 100
 
 static void push_to_list(queue_list_t *list, const int id)
 {
     node_t *temp_node = malloc(sizeof(node_t));
-
-    temp_node->person_id = id;
     temp_node->next_node = list->list_head;
     list->list_head = temp_node;
 }
@@ -20,7 +17,6 @@ void filling_queue(queue_list_t *list, array_element_t *array, const int size)
 
     for (int i = 0; i < size; i++)
     {
-        array[i].person_id = N - i;
         push_to_list(list, (i + 1));
     }
 }

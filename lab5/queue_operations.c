@@ -46,8 +46,8 @@ static void in_queue(queue_t *queue, bool is_random)
     }
 
     int64_t time_it = tick();
-    node_t *new_person = malloc(sizeof(node_t));
-    new_person->person_id = id;
+    node_t *new_person = calloc(1, sizeof(node_t));
+    new_person->time_service = id;
     new_person->next_node = queue->list.list_head;
     queue->list.list_head = new_person;
 
@@ -145,7 +145,7 @@ static void print_queue(queue_t queue)
     puts("Текущее состояние очереди (списком): ");
     while (temp != NULL)
     {
-        fprintf(stdout, "%d %p\n", temp->person_id, temp);
+        fprintf(stdout, "%.0lf %p\n", temp->time_service, temp);
         temp = temp->next_node;
     }
 }

@@ -11,11 +11,11 @@
 #define OK 0
 
 #define T1_MIN 0
-#define T1_MAX 6
+#define T1_MAX 3
 #define T2_MIN 1
 #define T2_MAX 8
 
-#define P1 3
+#define P1 7
 
 #define NEED_TOTAL_OUT 1000
 #define MIN_TO_DEL 2
@@ -393,6 +393,8 @@ int queue_processing(queue_t *fst_queue, queue_t *snd_queue,
         #endif
     }
 
+    fst_queue->avg_time = ((double)T1_MIN + (double)T1_MAX) / (double)2;
+    snd_queue->avg_time = ((double)T2_MIN + (double)T2_MAX) / (double)2;
     *chance = P1;
     *arr_time = real_time_array;
     *list_time = real_time_list;
