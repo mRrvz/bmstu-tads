@@ -11,11 +11,11 @@
 #define OK 0
 
 #define T1_MIN 0
-#define T1_MAX 3
+#define T1_MAX 6
 #define T2_MIN 1
 #define T2_MAX 8
 
-#define P1 7
+#define P1 3
 
 #define NEED_TOTAL_OUT 1000
 #define MIN_TO_DEL 2
