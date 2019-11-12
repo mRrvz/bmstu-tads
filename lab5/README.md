@@ -27,6 +27,7 @@
 
 #### Структура хранения очереди
 
+```
 typedef struct queue
 
 {
@@ -42,6 +43,7 @@ typedef struct queue
     double avg_time;
 
 } queue_t;
+```
 
 size - текущий размер очереди.
 
@@ -51,6 +53,7 @@ total_time - общее время обработки, avg_time - среднее
 
 #### Структура хранения связанного списка
 
+```
 typedef struct list
 
 {
@@ -58,9 +61,11 @@ typedef struct list
     node_t *list_head;
 
 } queue_list_t;
+```
 
 list_head - указатель на начало списка.
 
+```
 typedef struct node
 
 {
@@ -72,6 +77,7 @@ typedef struct node
     struct node *next_node;
 
 } node_t;
+```
 
 time_service - время последнего обслуживания.
 
@@ -79,6 +85,7 @@ total_time - общее время прибывания во всех очере
 
 #### Структура хранения кольцевого массива
 
+```
 typedef struct queue_arr
 
 {
@@ -92,11 +99,13 @@ typedef struct queue_arr
     array_element_t *end_initial;
 
 } queue_arr_t;
+```
 
 start - текущее начало массива, start_inital - «настоящее» начало массива
 
 end - текущий конец массива, end_inital - «настоящий» конец массива
 
+```
 typedef struct arr_elem
 
 {
@@ -106,6 +115,7 @@ typedef struct arr_elem
     double total_time;
 
 } array_element_t;
+```
 
 time_service --- время последнего обслуживания.
 
