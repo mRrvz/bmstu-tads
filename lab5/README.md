@@ -25,62 +25,90 @@
 
 ## Структуры данных
 
-Структура хранения очереди
+#### Структура хранения очереди
 
 typedef struct queue
+
 {
+
     int size;
+
     queue_arr_t arr;
+
     queue_list_t list;
+
     double total_time;
+
     double avg_time;
+
 } queue_t;
 
 size - текущий размер очереди.
-array - кольцевой массив, list - связанный список.
-total_time - общее время обработки, avg_time - среднее время
-обработки.
 
-Структура хранения связанного списка
+array - кольцевой массив, list - связанный список.
+
+total_time - общее время обработки, avg_time - среднее время обработки.
+
+#### Структура хранения связанного списка
 
 typedef struct list
+
 {
+
     node_t *list_head;
+
 } queue_list_t;
 
 list_head - указатель на начало списка.
 
 typedef struct node
+
 {
+
     double time_service;
+
     double total_time;
+
     struct node *next_node;
+
 } node_t;
 
 time_service - время последнего обслуживания.
+
 total_time - общее время прибывания во всех очередях.
 
-Структура хранения кольцевого массива
+#### Структура хранения кольцевого массива
 
 typedef struct queue_arr
+
 {
+
     array_element_t *start;
+
     array_element_t *start_initial;
+
     array_element_t *end;
+
     array_element_t *end_initial;
+
 } queue_arr_t;
 
-start - текущее начало массива, start_inital - «настоящее» начало
-массива
+start - текущее начало массива, start_inital - «настоящее» начало массива
+
 end - текущий конец массива, end_inital - «настоящий» конец массива
 
 typedef struct arr_elem
+
 {
+
     double time_service;
+
     double total_time;
+
 } array_element_t;
 
 time_service --- время последнего обслуживания.
+
 total_time --- общее время прибывания во всех очередях.
 
 ## Алгоритм
