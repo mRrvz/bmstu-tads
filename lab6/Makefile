@@ -1,5 +1,5 @@
 CFILES := $(wildcard src/*.c)
-FLAGS := -Wall -std=c99 -Werror
+FLAGS := -Wall -std=c99 
 DEBUG_FLAGS := -DDEBUG -g
 
 ifeq (debug,$(firstword $(MAKECMDGOALS)))
