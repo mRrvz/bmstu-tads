@@ -12,7 +12,7 @@ typedef struct tree
 {
     vertex_t *root;
     int size;
-    int depth;
+    int height;
 } tree_t;
 
 #endif

@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include "../nuklear/nuklear_cross.h"
 #include "../headers/tree_interfaces.h"
 #include "../headers/hash_interfaces.h"
 #include "../headers/read.h"
@@ -15,12 +16,15 @@ int main(int argc, char *argv[])
 
     FILE *f;
 
-    if ((f = fopen(argv[1], "r")) == NULL)
+    if ((f = fopen("tree.txt", "r")) == NULL)
     {
         return FILE_ERROR;
     }
 
     tree_t tree = create_tree(f);
+    #ifdef DEBUG
+        printf("Высота: %d. Размер: %d\n", tree.height, tree.size);
+    #endif
 
 
     /*  1. balance tree
