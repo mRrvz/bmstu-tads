@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <math.h>
 #include <string.h>
 #include "../headers/tree_interfaces.h"
 
@@ -33,15 +34,91 @@ tree_t create_tree(FILE *f)
         {
             curr_vertex = next_vertex;
             difference = strcmp(next_vertex->value, buff);
-            next_vertex = difference >= 0 ? next_vertex->right : next_vertex->left;
+            next_vertex = difference < 0 ? next_vertex->right : next_vertex->left;
             height++;
         } while (next_vertex != NULL);
 
-        difference >= 0 ? create_vertex(&curr_vertex->right, buff, height) : create_vertex(&curr_vertex->left, buff, height);
+        difference < 0 ? create_vertex(&curr_vertex->right, buff, height) : create_vertex(&curr_vertex->left, buff, height);
 
         tree.height = height > tree.height ? height : tree.height;
         tree.size++;
     }
 
     return tree;
+}
+
+static void create_pseudo_root(tree_t *const tree)
+{
+    vertex_t *pseudo_root = malloc(sizeof(vertex_t));
+
+    pseudo_root->left = NULL;
+    pseudo_root->right = tree->root;
+    tree->root = pseudo_root;
+}
+
+static void delete_pseudo_root(tree_t *const tree)
+{
+    vertex_t *temp = tree->root;
+    tree->root = tree->root->right;
+    free(temp);
+}
+
+static void compress(vertex_t *const root, int count)
+{
+    vertex_t *scanner = root;
+
+    for (int i = 0; i < count; i++)
+    {
+        vertex_t *child = scanner->right;
+        scanner->right = child->right;
+        scanner = scanner->right;
+        child->right = scanner->left;
+        scanner->left = child;
+    }
+}
+
+static void vine_to_tree(vertex_t *const root, int size)
+{
+    int leaves = size + 1 - pow(2.0, log2(size + 1));
+    compress(root, leaves);
+    size -= leaves;
+
+    while (size > 1)
+    {
+        compress(root, size / 2);
+        size /= 2;
+    }
+}
+
+static void tree_to_vine(vertex_t *const root)
+{
+    vertex_t *tail = root;
+    vertex_t *rest = tail->right;
+
+    while (rest != NULL)
+    {
+        if (rest->left == NULL)
+        {
+            tail = rest;
+            rest = rest->right;
+        }
+        else
+        {
+            vertex_t *temp = rest->left;
+            rest->left = temp->right;
+            temp->right = rest;
+            rest = temp;
+            tail->right = temp;
+        }
+    }
+}
+
+void balance_tree(tree_t *const tree)
+{
+    create_pseudo_root(tree);
+
+    tree_to_vine(tree->root);
+    vine_to_tree(tree->root, tree->size);
+
+    delete_pseudo_root(tree);
 }

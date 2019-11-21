@@ -16,17 +16,17 @@ static void create_vertex_string(const vertex_t *const vertex, char *buffer)
     char str_height[6];
 
     strcat(buffer, vertex->value);
-    strcat(buffer, " ");
-
-    vertex->right == NULL ? strcat(buffer, "NULL") : strcat(buffer, vertex->right->value);
-    strcat(buffer, " ");
+    buffer[strlen(buffer)] = ' ';
 
     vertex->left == NULL ? strcat(buffer, "NULL") : strcat(buffer, vertex->left->value);
-    strcat(buffer, " ");
+    buffer[strlen(buffer)] = ' ';
+
+    vertex->right == NULL ? strcat(buffer, "NULL") : strcat(buffer, vertex->right->value);
+    buffer[strlen(buffer)] = ' ';
 
     sprintf(str_height, "%d", vertex->height);
     strcat(buffer, str_height);
-    strcat(buffer, "_");
+    buffer[strlen(buffer)] = '_';
 
     if (vertex->right != NULL)
     {
@@ -42,7 +42,7 @@ static void create_vertex_string(const vertex_t *const vertex, char *buffer)
 void print_tree(tree_t tree)
 {
     char buffer[N] = "python3 src/painting.py '";
-    
+
     create_vertex_string(tree.root, buffer);
     buffer[strlen(buffer) - 1] = ASCII_APOSTROPHE;
     system(buffer);

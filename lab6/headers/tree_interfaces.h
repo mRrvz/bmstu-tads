@@ -6,4 +6,6 @@
 
 tree_t create_tree(FILE *f);
 
+void balance_tree(tree_t *const tree);
+
 #endif

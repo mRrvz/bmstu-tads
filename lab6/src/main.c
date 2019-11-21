@@ -27,6 +27,9 @@ int main(int argc, char *argv[])
 
     print_tree(tree);
 
+    balance_tree(&tree);
+    print_tree(tree);
+
 
     /*  1. balance tree
         2. add to tree
