@@ -4,7 +4,7 @@
 
 #define N 100
 
-static void create_vertex(vertex_t **vertex, char *string)
+static void create_vertex(vertex_t **vertex, char *string, int height)
 {
     *vertex = malloc(sizeof(vertex_t));
     (*vertex)->value = malloc((strlen(string) + 1) * sizeof(char));
@@ -12,6 +12,7 @@ static void create_vertex(vertex_t **vertex, char *string)
 
     (*vertex)->left = NULL;
     (*vertex)->right = NULL;
+    (*vertex)->height = height;
 }
 
 tree_t create_tree(FILE *f)
@@ -20,7 +21,7 @@ tree_t create_tree(FILE *f)
     char buff[N];
 
     fscanf(f, "%100s", buff);
-    create_vertex(&tree.root, buff);
+    create_vertex(&tree.root, buff, 0);
 
     while (fscanf(f, "%100s", buff) != EOF)
     {
@@ -36,7 +37,7 @@ tree_t create_tree(FILE *f)
             height++;
         } while (next_vertex != NULL);
 
-        difference >= 0 ? create_vertex(&curr_vertex->right, buff) : create_vertex(&curr_vertex->left, buff);
+        difference >= 0 ? create_vertex(&curr_vertex->right, buff, height) : create_vertex(&curr_vertex->left, buff, height);
 
         tree.height = height > tree.height ? height : tree.height;
         tree.size++;

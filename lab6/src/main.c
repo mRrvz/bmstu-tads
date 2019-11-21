@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-#include "../nuklear/nuklear_cross.h"
 #include "../headers/tree_interfaces.h"
 #include "../headers/hash_interfaces.h"
 #include "../headers/read.h"
@@ -25,6 +24,8 @@ int main(int argc, char *argv[])
     #ifdef DEBUG
         printf("Высота: %d. Размер: %d\n", tree.height, tree.size);
     #endif
+
+    print_tree(tree);
 
 
     /*  1. balance tree

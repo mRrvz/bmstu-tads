@@ -6,6 +6,7 @@ typedef struct vertex
     struct vertex *left;
     struct vertex *right;
     char *value;
+    int height;
 } vertex_t;
 
 typedef struct tree
