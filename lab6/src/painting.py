@@ -1,64 +1,126 @@
 from tkinter import *
 import argparse
+
+CANVAS_WIDHT = 1000
+CANVAS_HEIGHT = 1000
+HEIGHT = 25
+RL_COEFF = 20
+TB_COEFF = 20
+START_TREE_Y = 17
+RL_STEP = 100
+TB_STEP = 100
+
 parser = argparse.ArgumentParser()
 parser.add_argument('tree', type=str)
 args = parser.parse_args()
-print(args.tree)
-tree = args.tree.split('_')
-print(tree)
-tree_arr = []
 
-root = Tk()
-cs_width = 1000
-cs_height = 1000
-height = 25
-start_tree_y = 17
-rl_step = 100
-tb_step = 100
-first_branch = tree[0].split()
-print(first_branch)
-c = Canvas(root, width=cs_width, height=cs_height, bg='white')
-c.create_oval([cs_width/2, start_tree_y],[cs_height/2 + height,height + start_tree_y],fill="pink")
-c.create_text(cs_width / 2 + height / 2,start_tree_y - height / 2,text=first_branch[0],font="Arial 7")
-tree_arr.append((first_branch[0], (cs_width / 2, 5, cs_height / 2 + height, height)))
+def draw_tree():
+    tree_branches = args.tree.split('_')
+    first_branch = tree_branches[0].split()
+    tree_vertex = []
 
-c.create_oval([tree_arr[0][1][0] - rl_step, tree_arr[0][1][1] + tb_step],[tree_arr[0][1][2] - rl_step, tree_arr[0][1][3] +tb_step],fill="pink")
-c.create_text(tree_arr[0][1][0] - rl_step + height / 2, tree_arr[0][1][1] + tb_step - height / 2, text=first_branch[1],font="Arial 7")
-tree_arr.append((first_branch[1], (tree_arr[0][1][0] - rl_step, tree_arr[0][1][1] + tb_step, tree_arr[0][1][2] - rl_step, tree_arr[0][1][3] + tb_step)))
+    root = Tk()
+    c = Canvas(root, width=CANVAS_WIDHT, height=CANVAS_HEIGHT, bg='white')
 
-c.create_oval([tree_arr[0][1][0] + rl_step , tree_arr[0][1][1] + tb_step],[tree_arr[0][1][2] + rl_step, tree_arr[0][1][3] +tb_step],fill="pink")
-c.create_text(tree_arr[0][1][0] + rl_step + height / 2, tree_arr[0][1][1] + tb_step - height / 2, text=first_branch[2],font="Arial 7")
-tree_arr.append((first_branch[2], (tree_arr[0][1][0] + rl_step, tree_arr[0][1][1] + tb_step, tree_arr[0][1][2] + rl_step, tree_arr[0][1][3] + tb_step)))
+    c.create_oval(
+        [CANVAS_WIDHT / 2, START_TREE_Y],
+        [CANVAS_HEIGHT / 2 + HEIGHT, HEIGHT + START_TREE_Y],
+        fill="pink"
+    )
 
-j = 0
-c.create_line(tree_arr[j][1][0] + height / 2, tree_arr[j][1][1] + height / 2, tree_arr[j][1][0] - rl_step + height / 2, tree_arr[j][1][1] + tb_step + height / 2)
-c.create_line(tree_arr[j][1][0] + height / 2, tree_arr[j][1][1] + height / 2, tree_arr[j][1][0] + rl_step + height / 2, tree_arr[j][1][1] + tb_step + height / 2)
+    c.create_text(
+        CANVAS_WIDHT / 2 + HEIGHT / 2,
+        START_TREE_Y - HEIGHT / 2,
+        text=first_branch[0],
+        font="Arial 7"
+    )
+
+    tree_vertex.append((
+        first_branch[0], (
+            CANVAS_WIDHT / 2,
+            HEIGHT / 5,
+            CANVAS_HEIGHT / 2 + HEIGHT,
+            HEIGHT
+            )
+        )
+    )
+
+    for i in range(len(tree_branches)):
+        RL_STEP = 100
+        TB_STEP = 100
+        current_branch = list(map(str, tree_branches[i].split()))
+        for j in range(len(tree_vertex)):
+            if (tree_vertex[j][0] == current_branch[0]):
+                RL_STEP -= RL_COEFF * int(current_branch[3])
+                TB_STEP += TB_COEFF * int(current_branch[3])
+
+                if (current_branch[1] != "NULL"):
+                    c.create_oval(
+                        [tree_vertex[j][1][0] - RL_STEP, tree_vertex[j][1][1] + TB_STEP],
+                        [tree_vertex[j][1][2] - RL_STEP, tree_vertex[j][1][3] + TB_STEP],
+                        fill="pink"
+                    )
+
+                    c.create_line(
+                        tree_vertex[j][1][0] + HEIGHT / 2,
+                        tree_vertex[j][1][1] + HEIGHT / 2,
+                        tree_vertex[j][1][0] - RL_STEP + HEIGHT / 2,
+                        tree_vertex[j][1][1] + TB_STEP + HEIGHT / 2
+                    )
+
+                    c.create_text(
+                        tree_vertex[j][1][0] - RL_STEP + HEIGHT / 2,
+                        tree_vertex[j][1][1] + TB_STEP - HEIGHT / 2,
+                        text=current_branch[1],
+                        font="Arial 7"
+                    )
+
+                    tree_vertex.append((
+                        current_branch[1], (
+                            tree_vertex[j][1][0] - RL_STEP,
+                            tree_vertex[j][1][1] + TB_STEP,
+                            tree_vertex[j][1][2] - RL_STEP,
+                            tree_vertex[j][1][3] + TB_STEP
+                            )
+                        )
+                    )
+
+                if (current_branch[2] != "NULL"):
+                    c.create_oval(
+                        [tree_vertex[j][1][0] + RL_STEP, tree_vertex[j][1][1] + TB_STEP],
+                        [tree_vertex[j][1][2] + RL_STEP, tree_vertex[j][1][3] + TB_STEP],
+                        fill="pink"
+                    )
+
+                    c.create_line(
+                        tree_vertex[j][1][0] + HEIGHT / 2,
+                        tree_vertex[j][1][1] + HEIGHT / 2,
+                        tree_vertex[j][1][0] + RL_STEP + HEIGHT / 2,
+                        tree_vertex[j][1][1] + TB_STEP + HEIGHT / 2
+                    )
+
+                    c.create_text(
+                        tree_vertex[j][1][0] + RL_STEP + HEIGHT / 2,
+                        tree_vertex[j][1][1] + TB_STEP - HEIGHT / 2,
+                        text=current_branch[2],
+                        font="Arial 7"
+                    )
+
+                    tree_vertex.append((
+                        current_branch[2], (
+                            tree_vertex[j][1][0] + RL_STEP,
+                            tree_vertex[j][1][1] + TB_STEP,
+                            tree_vertex[j][1][2] + RL_STEP,
+                            tree_vertex[j][1][3] + TB_STEP
+                            )
+                        )
+                    )
+
+                break
 
 
-for i in range(1,len(tree)):
-    rl_step = 100
-    tb_step = 100
-    current_branch = list(map(str, tree[i].split()))
-    for j in range(len(tree_arr)):
-        if (tree_arr[j][0] == current_branch[0]):
-            rl_step = rl_step - 20 * int(current_branch[3])
-            tb_step = tb_step + 20 * int(current_branch[3])
-            if (current_branch[1] != "NULL"):
-                c.create_oval([tree_arr[j][1][0] - rl_step, tree_arr[j][1][1] + tb_step],[tree_arr[j][1][2] - rl_step, tree_arr[j][1][3] +tb_step],fill="pink")
-                c.create_line(tree_arr[j][1][0] + height / 2, tree_arr[j][1][1] + height / 2, tree_arr[j][1][0] - rl_step + height / 2, tree_arr[j][1][1] + tb_step + height / 2)
-                c.create_text(tree_arr[j][1][0] - rl_step + height / 2, tree_arr[j][1][1] + tb_step - height / 2, text=current_branch[1],font="Arial 7")
+    c.pack()
+    root.mainloop()
 
-                tree_arr.append((current_branch[1], (tree_arr[j][1][0] - rl_step, tree_arr[j][1][1] + tb_step, tree_arr[j][1][2] - rl_step, tree_arr[j][1][3] + tb_step)))
-
-            if (current_branch[2] != "NULL"):
-                c.create_oval([tree_arr[j][1][0] + rl_step, tree_arr[j][1][1] + tb_step],[tree_arr[j][1][2] + rl_step, tree_arr[j][1][3] +tb_step],fill="pink")
-                c.create_line(tree_arr[j][1][0] + height / 2, tree_arr[j][1][1] + height / 2, tree_arr[j][1][0] + rl_step + height / 2, tree_arr[j][1][1] + tb_step + height / 2)
-                c.create_text(tree_arr[j][1][0] + rl_step + height / 2, tree_arr[j][1][1] + tb_step - height / 2, text=current_branch[2],font="Arial 7")
-
-                tree_arr.append((current_branch[2], (tree_arr[j][1][0] + rl_step, tree_arr[j][1][1] + tb_step, tree_arr[j][1][2] + rl_step, tree_arr[j][1][3] + tb_step)))
-
-            break
-
-
-c.pack()
-root.mainloop()
+if __name__ == "__main__":
+    draw_tree()
