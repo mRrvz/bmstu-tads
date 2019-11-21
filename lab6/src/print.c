@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "../headers/print.h"
 
+#define ASCII_APOSTROPHE 39
 #define N 1000
 
 static void create_vertex_string(const vertex_t *const vertex, char *buffer)
@@ -16,11 +17,13 @@ static void create_vertex_string(const vertex_t *const vertex, char *buffer)
 
     strcat(buffer, vertex->value);
     strcat(buffer, " ");
-    vertex->right == NULL ? strcat(buffer, "NULL") : strcat(buffer, vertex->right->value);
 
+    vertex->right == NULL ? strcat(buffer, "NULL") : strcat(buffer, vertex->right->value);
     strcat(buffer, " ");
+
     vertex->left == NULL ? strcat(buffer, "NULL") : strcat(buffer, vertex->left->value);
     strcat(buffer, " ");
+
     sprintf(str_height, "%d", vertex->height);
     strcat(buffer, str_height);
     strcat(buffer, "_");
@@ -39,9 +42,8 @@ static void create_vertex_string(const vertex_t *const vertex, char *buffer)
 void print_tree(tree_t tree)
 {
     char buffer[N] = "python3 src/painting.py '";
-    printf("%d ", buffer[strlen(buffer) - 1]);
+    
     create_vertex_string(tree.root, buffer);
-    buffer[strlen(buffer) - 1] = 39;
+    buffer[strlen(buffer) - 1] = ASCII_APOSTROPHE;
     system(buffer);
-
 }
