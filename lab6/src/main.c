@@ -21,19 +21,14 @@ int main(int argc, char *argv[])
     }
 
     tree_t tree = create_tree(f);
-    #ifdef DEBUG
-        printf("Высота: %d. Размер: %d\n", tree.height, tree.size);
-    #endif
-
     print_tree(tree);
-
+    
     balance_tree(&tree);
     print_tree(tree);
 
-
-    /*  1. balance tree
-        2. add to tree
-        3. hash - table
+    /*
+        1. add to tree
+        2. hash - table
     */
 
 
