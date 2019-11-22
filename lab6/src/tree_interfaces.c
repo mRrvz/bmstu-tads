@@ -1,9 +1,34 @@
+#include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 #include "../headers/tree_interfaces.h"
 
 #define N 100
+
+bool check_repeats(const vertex_t *const vertex, char *string)
+{
+    if (vertex->right == NULL && vertex->left == NULL)
+    {
+        return false;
+    }
+
+    if (!strcmp(vertex->value, string))
+    {
+        return true;
+    }
+
+    if (vertex->right != NULL)
+    {
+        return check_repeats(vertex->right, string);
+    }
+
+    if (vertex->left != NULL)
+    {
+        return check_repeats(vertex->left, string);
+    }
+}
+
 
 static void create_vertex(vertex_t **vertex, char *string, int height)
 {
@@ -16,32 +41,38 @@ static void create_vertex(vertex_t **vertex, char *string, int height)
     (*vertex)->height = height;
 }
 
+void insertion_to_tree(tree_t *const tree, char *buff)
+{
+    int difference, height = 0;
+    vertex_t *next_vertex = tree->root;
+    vertex_t *curr_vertex = NULL;
+
+    do
+    {
+        curr_vertex = next_vertex;
+        difference = strcmp(next_vertex->value, buff);
+        next_vertex = difference < 0 ? next_vertex->right : next_vertex->left;
+        height++;
+    } while (next_vertex != NULL);
+
+    difference < 0 ? create_vertex(&curr_vertex->right, buff, height) : create_vertex(&curr_vertex->left, buff, height);
+
+    tree->height = height > tree->height ? height : tree->height;
+    tree->size++;
+}
+
 tree_t create_tree(FILE *f)
 {
     tree_t tree = { NULL, 1, 0 };
     char buff[N];
 
+    fseek(f, 0, SEEK_SET);
     fscanf(f, "%100s", buff);
     create_vertex(&tree.root, buff, 0);
 
     while (fscanf(f, "%100s", buff) != EOF)
     {
-        int difference, height = 0;
-        vertex_t *next_vertex = tree.root;
-        vertex_t *curr_vertex = NULL;
-
-        do
-        {
-            curr_vertex = next_vertex;
-            difference = strcmp(next_vertex->value, buff);
-            next_vertex = difference < 0 ? next_vertex->right : next_vertex->left;
-            height++;
-        } while (next_vertex != NULL);
-
-        difference < 0 ? create_vertex(&curr_vertex->right, buff, height) : create_vertex(&curr_vertex->left, buff, height);
-
-        tree.height = height > tree.height ? height : tree.height;
-        tree.size++;
+        insertion_to_tree(&tree, buff);
     }
 
     return tree;

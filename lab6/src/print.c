@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 #include "../headers/print.h"
 
 #define ASCII_APOSTROPHE 39
@@ -46,4 +47,12 @@ void print_tree(tree_t tree)
     create_vertex_string(tree.root, buffer);
     buffer[strlen(buffer) - 1] = ASCII_APOSTROPHE;
     system(buffer);
+}
+
+void print_tree_results(const int tree_size, int64_t std_tree_time, int64_t avl_tree_time)
+{
+    printf("Время добавления в обычное ДДП: %"PRId64"\n", std_tree_time);
+    printf("Время добавления в сбалансированое ДДП: %"PRId64"\n", avl_tree_time);
+    printf("Размер памяти занимаемый обоими деревьями одинаковый: %lu байт\n",
+        sizeof(vertex_t) * tree_size);
 }
