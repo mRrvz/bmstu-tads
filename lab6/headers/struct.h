@@ -29,14 +29,3 @@ typedef struct table
 } table_t;
 
 #endif
-
-/*
-change_tree(tree.root->right, tree.root->left);
-
-void change_tree(node_t *node1, node_t *node2)
-{
-    swap(node1->value, node2->value);
-    change_tree(node1->right, node2->left);
-    change_tree(node1->left, node2->right);
-}
-*/

@@ -29,7 +29,10 @@ int main(int argc, char *argv[])
     tree_t balanced_tree = create_tree(f);
     print_tree(tree);
 
+    int64_t s = tick();
     balance_tree(&balanced_tree);
+    int64_t a = tick();
+    printf("%"PRId64"aa\n", a - s);
     print_tree(balanced_tree);
 
     char word_to_add[N];

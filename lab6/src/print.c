@@ -5,7 +5,7 @@
 #include "../headers/print.h"
 
 #define ASCII_APOSTROPHE 39
-#define N 1000
+#define N 100000
 
 static void create_vertex_string(const vertex_t *const vertex, char *buffer)
 {
@@ -53,11 +53,11 @@ void print_results(const int tree_size,
     int64_t std_tree_time, int64_t avl_tree_time, int64_t hash_table_time,
     int std_tree_compare, int balanced_tree_compare)
 {
-    printf("\nВремя добавления в обычное ДДП: %"PRId64"\n", std_tree_time);
-    printf("Время добавления в сбалансированое ДДП: %"PRId64"\n", avl_tree_time);
-    printf("Время добавления в хеш-таблицу: %"PRId64"\n", hash_table_time);
+    printf("\nВремя добавления в обычное ДДП: %"PRId64" тиков\n", std_tree_time);
+    printf("Время добавления в АВЛ дерево: %"PRId64" тиков\n", avl_tree_time);
+    printf("Время добавления в хеш-таблицу: %"PRId64" тиков\n", hash_table_time);
     printf("Количество сравнений при добавлени в ДДП: %d\n", std_tree_compare);
-    printf("Количество сравнений при добавлени в сбалансированное ДДП: %d\n", balanced_tree_compare);
+    printf("Количество сравнений при добавлени в АВЛ дерево: %d\n", balanced_tree_compare);
     printf("Размер памяти занимаемый обоими деревьями одинаковый: %lu байт\n",
         sizeof(vertex_t) * tree_size);
     printf("Размер памяти занимаемый хеш таблицей: %lu байт\n",
