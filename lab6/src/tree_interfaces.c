@@ -41,7 +41,7 @@ static void create_vertex(vertex_t **vertex, char *string, int height)
     (*vertex)->height = height;
 }
 
-void insertion_to_tree(tree_t *const tree, char *buff)
+int insertion_to_tree(tree_t *const tree, char *buff)
 {
     int difference, height = 0;
     vertex_t *next_vertex = tree->root;
@@ -59,6 +59,8 @@ void insertion_to_tree(tree_t *const tree, char *buff)
 
     tree->height = height > tree->height ? height : tree->height;
     tree->size++;
+
+    return height;
 }
 
 tree_t create_tree(FILE *f)

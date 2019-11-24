@@ -16,11 +16,12 @@ int main(int argc, char *argv[])
 {
     setbuf(stdout, NULL);
 
-    int code_error;
+    int code_error, table_size;
     FILE *f;
 
-    if ((f = fopen("tree.txt", "r")) == NULL)
+    if ((f = fopen(argv[1], "r")) == NULL)
     {
+        fprintf(stderr, "Ошибка при чтении файла\n");
         return FILE_ERROR;
     }
 
@@ -39,21 +40,34 @@ int main(int argc, char *argv[])
     }
 
     int64_t start_time = tick();
-    insertion_to_tree(&tree, word_to_add);
+    int std_tree_compare = insertion_to_tree(&tree, word_to_add);
     int64_t std_tree_time = tick() - start_time;
     print_tree(tree);
 
     start_time = tick();
-    insertion_to_tree(&balanced_tree, word_to_add);
+    int balanced_tree_compare = insertion_to_tree(&balanced_tree, word_to_add);
     int64_t avl_tree_time = tick() - start_time;
     print_tree(balanced_tree);
 
-    print_tree_results(tree.size, std_tree_time, avl_tree_time);
+    if ((code_error = read_table_size(&table_size)))
+    {
+        return code_error;
+    }
 
-    /*
-        1. hash - table
-    */
+    table_t table = create_hash_table(f, table_size);
+    print_hash_table(table);
 
+    if ((code_error = read_word_table(word_to_add)))
+    {
+        return code_error;
+    }
+
+    int64_t hash_table_time = insertion_to_table(table, word_to_add);
+    print_hash_table(table);
+
+    print_results(tree.size, std_tree_time, avl_tree_time, hash_table_time,
+        std_tree_compare, balanced_tree_compare);
+    fclose(f);
 
     return OK;
 }

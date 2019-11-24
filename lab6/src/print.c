@@ -49,10 +49,43 @@ void print_tree(tree_t tree)
     system(buffer);
 }
 
-void print_tree_results(const int tree_size, int64_t std_tree_time, int64_t avl_tree_time)
+void print_results(const int tree_size,
+    int64_t std_tree_time, int64_t avl_tree_time, int64_t hash_table_time,
+    int std_tree_compare, int balanced_tree_compare)
 {
-    printf("Время добавления в обычное ДДП: %"PRId64"\n", std_tree_time);
+    printf("\nВремя добавления в обычное ДДП: %"PRId64"\n", std_tree_time);
     printf("Время добавления в сбалансированое ДДП: %"PRId64"\n", avl_tree_time);
+    printf("Время добавления в хеш-таблицу: %"PRId64"\n", hash_table_time);
+    printf("Количество сравнений при добавлени в ДДП: %d\n", std_tree_compare);
+    printf("Количество сравнений при добавлени в сбалансированное ДДП: %d\n", balanced_tree_compare);
     printf("Размер памяти занимаемый обоими деревьями одинаковый: %lu байт\n",
         sizeof(vertex_t) * tree_size);
+    printf("Размер памяти занимаемый хеш таблицей: %lu байт\n",
+        sizeof(hash_node_t) * tree_size);
+}
+
+void print_hash_table(table_t table)
+{
+    fprintf(stdout, "%s", "\n======= ХЕШ-ТАБЛИЦА ======="
+        "\nЯчейки без значения НЕ БУДУТ выведены на экран\n");
+
+    for (int i = 0; i < table.size; i++)
+    {
+        if (table.table_ptr[i].value != NULL)
+        {
+            printf("\nКЛЮЧ: %d | Значение: %s", i, table.table_ptr[i].value);
+
+            if (table.table_ptr[i].next_elem != NULL)
+            {
+                hash_node_t *temp = table.table_ptr[i].next_elem;
+                while (temp != NULL)
+                {
+                    printf(" | Значение: %s", temp->value);
+                    temp = temp->next_elem;
+                }
+            }
+        }
+    }
+
+    putchar('\n');
 }

@@ -5,4 +5,8 @@
 
 int read_word(const tree_t tree, char *string);
 
+int read_word_table(char *string);
+
+int read_table_size(int *size);
+
 #endif

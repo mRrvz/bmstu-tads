@@ -1,0 +1,9 @@
+string
+str
+stroka
+stroka1
+string1
+str1
+string2
+stroka2
+str2

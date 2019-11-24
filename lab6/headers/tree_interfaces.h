@@ -12,6 +12,6 @@ tree_t create_tree(FILE *f);
 
 void balance_tree(tree_t *const tree);
 
-void insertion_to_tree(tree_t *const tree, char *buff);
+int insertion_to_tree(tree_t *const tree, char *buff);
 
 #endif
