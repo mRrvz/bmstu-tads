@@ -27,13 +27,10 @@ int main(int argc, char *argv[])
 
     tree_t tree = create_tree(f);
     tree_t balanced_tree = create_tree(f);
-    print_tree(tree);
+    print_tree(tree, false);
 
-    int64_t s = tick();
     balance_tree(&balanced_tree);
-    int64_t a = tick();
-    printf("%"PRId64"aa\n", a - s);
-    print_tree(balanced_tree);
+    print_tree(balanced_tree, true);
 
     char word_to_add[N];
 
@@ -45,12 +42,12 @@ int main(int argc, char *argv[])
     int64_t start_time = tick();
     int std_tree_compare = insertion_to_tree(&tree, word_to_add);
     int64_t std_tree_time = tick() - start_time;
-    print_tree(tree);
+    print_tree(tree, false);
 
     start_time = tick();
     int balanced_tree_compare = insertion_to_tree(&balanced_tree, word_to_add);
     int64_t avl_tree_time = tick() - start_time;
-    print_tree(balanced_tree);
+    print_tree(balanced_tree, true);
 
     if ((code_error = read_table_size(&table_size)))
     {

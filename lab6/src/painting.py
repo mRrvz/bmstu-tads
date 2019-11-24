@@ -1,14 +1,12 @@
 from tkinter import *
 import argparse
 
-CANVAS_WIDHT = 1000
-CANVAS_HEIGHT = 1000
-HEIGHT = 25
-RL_COEFF = 10
-TB_COEFF = 10
-START_TREE_Y = 17
-RL_STEP = 100
-TB_STEP = 100
+CANVAS_WIDHT = 1600
+CANVAS_HEIGHT = 1600
+HEIGHT = 20
+RL_COEFF = 50
+TB_COEFF = 50
+START_TREE_Y = 20
 
 parser = argparse.ArgumentParser()
 parser.add_argument('tree', type=str)
@@ -32,13 +30,13 @@ def draw_tree():
         CANVAS_WIDHT / 2 + HEIGHT / 2,
         START_TREE_Y - HEIGHT / 2,
         text=first_branch[0],
-        font="Arial 7"
+        font="Arial 10"
     )
 
     tree_vertex.append((
         first_branch[0], (
             CANVAS_WIDHT / 2,
-            HEIGHT / 5,
+            START_TREE_Y,
             CANVAS_HEIGHT / 2 + HEIGHT,
             HEIGHT
             )
@@ -46,13 +44,11 @@ def draw_tree():
     )
 
     for i in range(len(tree_branches)):
-        RL_STEP = 100
-        TB_STEP = 100
         current_branch = list(map(str, tree_branches[i].split()))
         for j in range(len(tree_vertex)):
             if (tree_vertex[j][0] == current_branch[0]):
-                RL_STEP -= RL_COEFF * int(current_branch[3])
-                TB_STEP += TB_COEFF * int(current_branch[3])
+                RL_STEP =  RL_COEFF * (int(current_branch[3]) + 1);
+                TB_STEP = TB_COEFF * (int(current_branch[3]) + 1)
 
                 if (current_branch[1] != "NULL"):
                     c.create_oval(
@@ -72,7 +68,7 @@ def draw_tree():
                         tree_vertex[j][1][0] - RL_STEP + HEIGHT / 2,
                         tree_vertex[j][1][1] + TB_STEP - HEIGHT / 2,
                         text=current_branch[1],
-                        font="Arial 7"
+                        font="Arial 10"
                     )
 
                     tree_vertex.append((
@@ -103,7 +99,7 @@ def draw_tree():
                         tree_vertex[j][1][0] + RL_STEP + HEIGHT / 2,
                         tree_vertex[j][1][1] + TB_STEP - HEIGHT / 2,
                         text=current_branch[2],
-                        font="Arial 7"
+                        font="Arial 10"
                     )
 
                     tree_vertex.append((

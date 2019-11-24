@@ -5,7 +5,10 @@
 #include "../headers/print.h"
 
 #define ASCII_APOSTROPHE 39
-#define N 100000
+#define N 10000
+#define MAX_HEIGHT_SIZE 10
+
+int _height = 1;
 
 static void create_vertex_string(const vertex_t *const vertex, char *buffer)
 {
@@ -14,7 +17,7 @@ static void create_vertex_string(const vertex_t *const vertex, char *buffer)
         return;
     }
 
-    char str_height[6];
+    char str_height[MAX_HEIGHT_SIZE];
 
     strcat(buffer, vertex->value);
     buffer[strlen(buffer)] = ' ';
@@ -40,12 +43,49 @@ static void create_vertex_string(const vertex_t *const vertex, char *buffer)
     }
 }
 
-void print_tree(tree_t tree)
+static void calculate_height(vertex_t *vertex)
+{
+    if (vertex->right == NULL && vertex->left == NULL)
+    {
+        _height = 0;
+    }
+
+    if (vertex->left != NULL)
+    {
+        vertex->left->height = _height;
+    }
+
+    if (vertex->right != NULL)
+    {
+        vertex->right->height = _height;
+    }
+
+    if (vertex->right != NULL)
+    {
+        ++_height;
+        calculate_height(vertex->right);
+    }
+
+    if (vertex->left != NULL)
+    {
+        ++_height;
+        calculate_height(vertex->left);
+    }
+}
+
+void print_tree(tree_t tree, bool is_balanced)
 {
     char buffer[N] = "python3 src/painting.py '";
 
+    if (is_balanced)
+    {
+        tree.root->height = 0;
+        calculate_height(tree.root);
+    }
+
     create_vertex_string(tree.root, buffer);
     buffer[strlen(buffer) - 1] = ASCII_APOSTROPHE;
+    puts(buffer);
     system(buffer);
 }
 
