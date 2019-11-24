@@ -85,7 +85,6 @@ void print_tree(tree_t tree, bool is_balanced)
 
     create_vertex_string(tree.root, buffer);
     buffer[strlen(buffer) - 1] = ASCII_APOSTROPHE;
-    puts(buffer);
     system(buffer);
 }
 

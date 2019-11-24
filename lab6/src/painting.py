@@ -4,8 +4,9 @@ import argparse
 CANVAS_WIDHT = 1600
 CANVAS_HEIGHT = 1600
 HEIGHT = 20
-RL_COEFF = 50
-TB_COEFF = 50
+RL_COEFF = 25
+TB_COEFF = 25
+S_CONF = 20
 START_TREE_Y = 20
 
 parser = argparse.ArgumentParser()
@@ -38,7 +39,8 @@ def draw_tree():
             CANVAS_WIDHT / 2,
             START_TREE_Y,
             CANVAS_HEIGHT / 2 + HEIGHT,
-            HEIGHT
+            HEIGHT + START_TREE_Y,
+            (CANVAS_WIDHT / 2 + CANVAS_HEIGHT / 2 + HEIGHT) / 2
             )
         )
     )
@@ -47,25 +49,25 @@ def draw_tree():
         current_branch = list(map(str, tree_branches[i].split()))
         for j in range(len(tree_vertex)):
             if (tree_vertex[j][0] == current_branch[0]):
-                RL_STEP =  RL_COEFF * (int(current_branch[3]) + 1);
+                RL_STEP = RL_COEFF * (int(current_branch[3]) + 1)
                 TB_STEP = TB_COEFF * (int(current_branch[3]) + 1)
 
                 if (current_branch[1] != "NULL"):
                     c.create_oval(
-                        [tree_vertex[j][1][0] - RL_STEP, tree_vertex[j][1][1] + TB_STEP],
-                        [tree_vertex[j][1][2] - RL_STEP, tree_vertex[j][1][3] + TB_STEP],
+                        [tree_vertex[j][1][0] - RL_STEP - S_CONF, tree_vertex[j][1][1] + TB_STEP],
+                        [tree_vertex[j][1][2] - RL_STEP - S_CONF, tree_vertex[j][1][3] + TB_STEP],
                         fill="pink"
                     )
 
                     c.create_line(
-                        tree_vertex[j][1][0] + HEIGHT / 2,
+                        tree_vertex[j][1][4],
                         tree_vertex[j][1][1] + HEIGHT / 2,
-                        tree_vertex[j][1][0] - RL_STEP + HEIGHT / 2,
+                        tree_vertex[j][1][0] - RL_STEP + HEIGHT / 2 - S_CONF,
                         tree_vertex[j][1][1] + TB_STEP + HEIGHT / 2
                     )
 
                     c.create_text(
-                        tree_vertex[j][1][0] - RL_STEP + HEIGHT / 2,
+                        tree_vertex[j][1][0] - RL_STEP + HEIGHT / 2 - S_CONF,
                         tree_vertex[j][1][1] + TB_STEP - HEIGHT / 2,
                         text=current_branch[1],
                         font="Arial 10"
@@ -76,27 +78,28 @@ def draw_tree():
                             tree_vertex[j][1][0] - RL_STEP,
                             tree_vertex[j][1][1] + TB_STEP,
                             tree_vertex[j][1][2] - RL_STEP,
-                            tree_vertex[j][1][3] + TB_STEP
+                            tree_vertex[j][1][3] + TB_STEP,
+                            ((tree_vertex[j][1][0] - RL_STEP - S_CONF) + (tree_vertex[j][1][2] - RL_STEP - S_CONF)) / 2
                             )
                         )
                     )
 
                 if (current_branch[2] != "NULL"):
                     c.create_oval(
-                        [tree_vertex[j][1][0] + RL_STEP, tree_vertex[j][1][1] + TB_STEP],
-                        [tree_vertex[j][1][2] + RL_STEP, tree_vertex[j][1][3] + TB_STEP],
+                        [tree_vertex[j][1][0] + RL_STEP + S_CONF, tree_vertex[j][1][1] + TB_STEP],
+                        [tree_vertex[j][1][2] + RL_STEP + S_CONF, tree_vertex[j][1][3] + TB_STEP],
                         fill="pink"
                     )
 
                     c.create_line(
-                        tree_vertex[j][1][0] + HEIGHT / 2,
+                        tree_vertex[j][1][4],
                         tree_vertex[j][1][1] + HEIGHT / 2,
-                        tree_vertex[j][1][0] + RL_STEP + HEIGHT / 2,
+                        tree_vertex[j][1][0] + RL_STEP + HEIGHT / 2 + S_CONF,
                         tree_vertex[j][1][1] + TB_STEP + HEIGHT / 2
                     )
 
                     c.create_text(
-                        tree_vertex[j][1][0] + RL_STEP + HEIGHT / 2,
+                        tree_vertex[j][1][0] + RL_STEP + HEIGHT / 2 + S_CONF,
                         tree_vertex[j][1][1] + TB_STEP - HEIGHT / 2,
                         text=current_branch[2],
                         font="Arial 10"
@@ -107,7 +110,8 @@ def draw_tree():
                             tree_vertex[j][1][0] + RL_STEP,
                             tree_vertex[j][1][1] + TB_STEP,
                             tree_vertex[j][1][2] + RL_STEP,
-                            tree_vertex[j][1][3] + TB_STEP
+                            tree_vertex[j][1][3] + TB_STEP,
+                            (tree_vertex[j][1][0] + RL_STEP + S_CONF + tree_vertex[j][1][2] + RL_STEP + S_CONF) / 2
                             )
                         )
                     )
