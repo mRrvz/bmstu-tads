@@ -2,9 +2,13 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+
 #include "../headers/tree_interfaces.h"
+#include "../headers/print.h"
 
 #define N 100
+
+int curr_size = 0;
 
 bool check_repeats(const vertex_t *const vertex, char *string)
 {
@@ -80,78 +84,42 @@ tree_t create_tree(FILE *f)
     return tree;
 }
 
-static void create_pseudo_root(tree_t *const tree)
+static vertex_t *build_tree(vertex_t **nodes, int start, int end)
 {
-    vertex_t *pseudo_root = malloc(sizeof(vertex_t));
-
-    pseudo_root->left = NULL;
-    pseudo_root->right = tree->root;
-    tree->root = pseudo_root;
-}
-
-static void delete_pseudo_root(tree_t *const tree)
-{
-    vertex_t *temp = tree->root;
-    tree->root = tree->root->right;
-    free(temp);
-}
-
-static void compress(vertex_t *const root, int count)
-{
-    vertex_t *scanner = root;
-
-    for (int i = 0; i < count; i++)
+    printf("%d %d\n", start, end);
+    if (start > end)
     {
-        vertex_t *child = scanner->right;
-        scanner->right = child->right;
-        scanner = scanner->right;
-        child->right = scanner->left;
-        scanner->left = child;
+        return NULL;
     }
+
+    int mid = (start + end) / 2;
+    vertex_t *root = nodes[mid];
+    root->left = build_tree(nodes, start, mid - 1);
+    root->right = build_tree(nodes, mid + 1, end);
+
+    return root;
 }
 
-static void vine_to_tree(vertex_t *const root, int size)
+static void init_nodes_array(vertex_t *root, vertex_t **nodes)
 {
-    int leaves = size + 1 - pow(2.0, log2(size + 1));
-    compress(root, leaves);
-    size -= leaves;
-
-    while (size > 1)
+    if (root == NULL)
     {
-        compress(root, size / 2);
-        size /= 2;
+        return;
     }
+
+    init_nodes_array(root->left, nodes);
+    nodes[curr_size++] = root->left;
+    printf("%p size\n", nodes[curr_size - 1]);
+    init_nodes_array(root->right, nodes);
 }
 
-static void tree_to_vine(vertex_t *const root)
+vertex_t *balance_tree(tree_t *const tree)
 {
-    vertex_t *tail = root;
-    vertex_t *rest = tail->right;
-
-    while (rest != NULL)
+    vertex_t *nodes[100];
+    init_nodes_array(tree->root, nodes);
+    for (int i = 0; i < tree->size; i++)
     {
-        if (rest->left == NULL)
-        {
-            tail = rest;
-            rest = rest->right;
-        }
-        else
-        {
-            vertex_t *temp = rest->left;
-            rest->left = temp->right;
-            temp->right = rest;
-            rest = temp;
-            tail->right = temp;
-        }
+        printf("%p p", nodes[i]);
     }
-}
-
-void balance_tree(tree_t *const tree)
-{
-    create_pseudo_root(tree);
-
-    tree_to_vine(tree->root);
-    vine_to_tree(tree->root, tree->size);
-
-    delete_pseudo_root(tree);
+    return build_tree(nodes, 0, tree->size - 1);
 }

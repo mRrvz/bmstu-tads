@@ -27,10 +27,11 @@ int main(int argc, char *argv[])
 
     tree_t tree = create_tree(f);
     tree_t balanced_tree = create_tree(f);
-    print_tree(tree, false);
+    //print_tree(tree, false);
 
-    balance_tree(&balanced_tree);
+    balanced_tree.root = balance_tree(&balanced_tree);
     print_tree(balanced_tree, true);
+    exit(0);
 
     char word_to_add[N];
 
