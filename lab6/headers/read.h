@@ -9,4 +9,6 @@ int read_word_table(char *string);
 
 int read_table_size(int *size);
 
+int read_max_compare(double *max_compare);
+
 #endif

@@ -63,6 +63,7 @@ int insertion_to_tree(tree_t *const tree, char *buff)
 
     tree->height = height > tree->height ? height : tree->height;
     tree->size++;
+    tree->total_compare += height;
 
     return height;
 }
@@ -84,42 +85,86 @@ tree_t create_tree(FILE *f)
     return tree;
 }
 
-static vertex_t *build_tree(vertex_t **nodes, int start, int end)
+static void create_pseudo_root(tree_t *const tree)
 {
-    printf("%d %d\n", start, end);
-    if (start > end)
+    vertex_t *pseudo_root = malloc(sizeof(vertex_t));
+    pseudo_root->left = NULL;
+    pseudo_root->right = tree->root;
+    tree->root = pseudo_root;
+}
+
+static void delete_pseudo_root(tree_t *const tree)
+{
+    vertex_t *temp = tree->root;
+    tree->root = tree->root->right;
+    free(temp);
+}
+
+static vertex_t *build_tree(vertex_t **list_head, int n)
+{
+    if (n <= 0)
     {
         return NULL;
     }
 
-    int mid = (start + end) / 2;
-    vertex_t *root = nodes[mid];
-    root->left = build_tree(nodes, start, mid - 1);
-    root->right = build_tree(nodes, mid + 1, end);
+    vertex_t *left = build_tree(list_head, n / 2);
+    vertex_t *root;
+    create_vertex(&root, (*list_head)->value, 0);
+    root->left = left;
+    *list_head = (*list_head)->right;
+    root->right = build_tree(list_head, n - n / 2 - 1);
 
     return root;
 }
 
-static void init_nodes_array(vertex_t *root, vertex_t **nodes)
+static void tree_to_vine(vertex_t *const root)
 {
-    if (root == NULL)
-    {
-        return;
-    }
+    vertex_t *tail = root;
+    vertex_t *rest = tail->right;
 
-    init_nodes_array(root->left, nodes);
-    nodes[curr_size++] = root->left;
-    printf("%p size\n", nodes[curr_size - 1]);
-    init_nodes_array(root->right, nodes);
+    while (rest != NULL)
+    {
+        if (rest->left == NULL)
+        {
+            tail = rest;
+            rest = rest->right;
+        }
+        else
+        {
+            vertex_t *temp = rest->left;
+            rest->left = temp->right;
+            temp->right = rest;
+            rest = temp;
+            tail->right = temp;
+        }
+    }
 }
 
 vertex_t *balance_tree(tree_t *const tree)
 {
-    vertex_t *nodes[100];
-    init_nodes_array(tree->root, nodes);
-    for (int i = 0; i < tree->size; i++)
+    create_pseudo_root(tree);
+    tree_to_vine(tree->root);
+    delete_pseudo_root(tree);
+    return build_tree(&tree->root, tree->size);
+}
+
+int count_compares(FILE *f, tree_t tree)
+{
+    char buff[N];
+    int compares = 0, difference;
+    fseek(f, 0, SEEK_SET);
+
+    while (fscanf(f, "%100s", buff) != EOF)
     {
-        printf("%p p", nodes[i]);
+        vertex_t *next_vertex = tree.root;
+
+        do
+        {
+            difference = strcmp(next_vertex->value, buff);
+            next_vertex = difference < 0 ? next_vertex->right : next_vertex->left;
+            compares++;
+        } while (difference);
     }
-    return build_tree(nodes, 0, tree->size - 1);
+
+    return compares;
 }

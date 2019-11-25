@@ -47,7 +47,7 @@ static void calculate_height(vertex_t *vertex)
 {
     if (vertex->right == NULL && vertex->left == NULL)
     {
-        _height = 0;
+        _height = 1;
     }
 
     if (vertex->left != NULL)
@@ -79,6 +79,7 @@ void print_tree(tree_t tree, bool is_balanced)
 
     if (is_balanced)
     {
+        _height = 1;
         tree.root->height = 0;
         calculate_height(tree.root);
     }
@@ -90,14 +91,21 @@ void print_tree(tree_t tree, bool is_balanced)
 
 void print_results(const int tree_size,
     int64_t std_tree_time, int64_t avl_tree_time, int64_t hash_table_time,
-    int std_tree_compare, int balanced_tree_compare)
+    int std_tree_compare, int balanced_tree_compare, int64_t table1_time,
+    int64_t table2_time)
 {
+    printf("\n==============================================================");
     printf("\nВремя добавления в обычное ДДП: %"PRId64" тиков\n", std_tree_time);
     printf("Время добавления в АВЛ дерево: %"PRId64" тиков\n", avl_tree_time);
-    printf("Время добавления в хеш-таблицу: %"PRId64" тиков\n", hash_table_time);
-    printf("Количество сравнений при добавлени в ДДП: %d\n", std_tree_compare);
-    printf("Количество сравнений при добавлени в АВЛ дерево: %d\n", balanced_tree_compare);
-    printf("Размер памяти занимаемый обоими деревьями одинаковый: %lu байт\n",
+    printf("Время добавления в хеш-таблицу: %"PRId64" тиков\n\n", hash_table_time);
+    printf("Время формирования хеш-таблицы хешированием №1: %"PRId64"\n", table1_time);
+    if (table2_time != -1)
+    {
+        printf("Время формирования хеш-таблицы хешированием №2: %"PRId64"\n", table2_time);
+    }
+    printf("\nСреднее количество сравнений при поиске в ДДП: %lf\n", (double)std_tree_compare / tree_size);
+    printf("Среднее количество сравнений при поиске в АВЛ-дереве: %lf\n", (double)balanced_tree_compare / tree_size);
+    printf("\nРазмер памяти занимаемый обоими деревьями одинаковый: %lu байт\n",
         sizeof(vertex_t) * tree_size);
     printf("Размер памяти занимаемый хеш таблицей: %lu байт\n",
         sizeof(hash_node_t) * tree_size);
@@ -107,6 +115,9 @@ void print_hash_table(table_t table)
 {
     fprintf(stdout, "%s", "\n======= ХЕШ-ТАБЛИЦА ======="
         "\nЯчейки без значения НЕ БУДУТ выведены на экран\n");
+
+    fprintf(stdout, "Среднее количество сравнений для %d элементов хеш-таблицы: %lf\n",
+        table.size, (double)table.total_compare / table.size);
 
     for (int i = 0; i < table.size; i++)
     {

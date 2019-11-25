@@ -14,6 +14,7 @@ typedef struct tree
     vertex_t *root;
     int size;
     int height;
+    int total_compare;
 } tree_t;
 
 typedef struct node
@@ -26,6 +27,7 @@ typedef struct table
 {
     hash_node_t *table_ptr;
     int size;
+    int total_compare;
 } table_t;
 
 #endif

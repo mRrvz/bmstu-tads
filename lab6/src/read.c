@@ -6,6 +6,7 @@
 #define INVALID_INPUT 2
 #define ALREADY_IN 3
 #define INVALID_TABLE_SIZE 4
+#define INVALID_COMPARE_SIZE 5
 
 #define MIN_TABLE_SIZE 1
 #define MAX_TABLE_SIZE 1000
@@ -55,6 +56,23 @@ int read_table_size(int *size)
     if (*size < MIN_TABLE_SIZE || *size > MAX_TABLE_SIZE)
     {
         return INVALID_TABLE_SIZE;
+    }
+
+    return OK;
+}
+
+int read_max_compare(double *max_compare)
+{
+    fprintf(stdout, "\nВведите максимальное среднее количество сравнений: ");
+
+    if ((fscanf(stdin, "%lf", max_compare)) != READ_OK)
+    {
+        return INVALID_INPUT;
+    }
+
+    if (*max_compare < 0)
+    {
+        return INVALID_COMPARE_SIZE;
     }
 
     return OK;

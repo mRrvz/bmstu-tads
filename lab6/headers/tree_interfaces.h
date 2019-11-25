@@ -14,4 +14,6 @@ vertex_t *balance_tree(tree_t *const tree);
 
 int insertion_to_tree(tree_t *const tree, char *buff);
 
+int count_compares(FILE *f, tree_t tree);
+
 #endif
