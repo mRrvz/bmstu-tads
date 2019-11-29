@@ -49,7 +49,6 @@ static void print_array(queue_t queue)
     }
 
     if (queue.arr.start < queue.arr.end)
-        puts("TUT");
         for (array_element_t *start = queue.arr.start; start <= queue.arr.end; start++)
         {
             printf("%d %lf   ", start->person_id, start->time_service);
@@ -119,7 +118,7 @@ static void in_queue(queue_t *queue, const int size)
     queue->size++;
 }
 
-static void out_queue_list(queue_t *queue, double *const avg_time)
+static int64_t out_queue_list(queue_t *queue, double *const avg_time)
 {
     node_t *last = queue->list.list_head;
     node_t *prev = NULL;
@@ -130,6 +129,7 @@ static void out_queue_list(queue_t *queue, double *const avg_time)
     }
 
     *avg_time += last->total_time;
+    int64_t st_time = tick();
     free(last);
 
     if (prev != NULL)
@@ -140,6 +140,8 @@ static void out_queue_list(queue_t *queue, double *const avg_time)
     {
         queue->list.list_head = NULL;
     }
+
+    return tick() - st_time;
 }
 
 static void out_queue_array(queue_t *queue)
@@ -162,11 +164,9 @@ static void out_queue(queue_t *queue, double *const avg_time)
         return;
     }
 
-    int64_t time_it = tick();
-    out_queue_list(queue, avg_time);
-    real_time_list += tick() - time_it;
-    time_it = tick();
+    real_time_list += out_queue_list(queue, avg_time);
 
+    int64_t time_it = tick();
     out_queue_array(queue);
     real_time_array += tick() - time_it;
     queue->size--;

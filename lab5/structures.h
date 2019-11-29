@@ -17,6 +17,7 @@ typedef struct node
 typedef struct list
 {
     node_t *list_head;
+    node_t *list_tail;
 } queue_list_t;
 
 typedef struct arr_elem

@@ -91,8 +91,6 @@ static void out_queue(queue_t *queue, int *free_size)
         return;
     }
 
-    int64_t time_it = tick();
-
     node_t *last = queue->list.list_head;
     node_t *prev = NULL;
     while (last->next_node != NULL)
@@ -102,6 +100,7 @@ static void out_queue(queue_t *queue, int *free_size)
     }
 
     free_adresses[(*free_size)++] = last;
+    int64_t time_it = tick();
     free(last);
 
     if (prev != NULL)

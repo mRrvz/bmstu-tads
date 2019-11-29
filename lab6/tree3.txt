@@ -1,9 +1,12 @@
-IU1
-IU2
-IU3
-IU4
 IU5
 IU6
 IU7
 IU8
 IU10
+mama
+papa
+ded
+baba
+vnuchka
+zhuchka
+ANYA

@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     table_t table = create_hash_table(f, table_size, false, &table1_time);
     print_hash_table(table);
 
-    if (table.total_compare > max_compare)
+    if ((double)table.total_compare / table.size > max_compare)
     {
         fprintf(stdout, "%s", "\nКоличество сравнений превышает максимально указанное.\n"
         "Произведена реструктуризация хеш-таблицы\n");
