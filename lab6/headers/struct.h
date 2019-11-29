@@ -28,6 +28,7 @@ typedef struct table
     hash_node_t *table_ptr;
     int size;
     int total_compare;
+    int elements;
 } table_t;
 
 #endif

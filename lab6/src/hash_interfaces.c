@@ -82,7 +82,7 @@ table_t create_hash_table(FILE *f, const int size, bool is_nkey, int64_t *form_t
 {
     char buffer[N];
     int64_t start_time, end_time;
-    table_t table = { 0, 0, 0 };
+    table_t table = { 0, 0, 0, 0 };
 
     init_table(&table, size);
     fseek(f, 0, SEEK_SET);
@@ -94,6 +94,7 @@ table_t create_hash_table(FILE *f, const int size, bool is_nkey, int64_t *form_t
         int key = is_nkey ? create_new_key(buffer, size) : create_key(buffer, size);
         table.total_compare += create_node(table, buffer, key);
         end_time = tick();
+        table.elements++;
         *form_time += end_time - start_time;
     }
 
@@ -109,4 +110,19 @@ int64_t insertion_to_table(table_t *const table, char *buffer)
     table->size++;
 
     return insert_time;
+}
+
+int count_table_size(const table_t table)
+{
+    int table_size = table.elements + table.size + 1;
+
+    for (int i = 0; i < table.size; i++)
+    {
+        if (table.table_ptr[i].value != NULL)
+        {
+            table_size--;
+        }
+    }
+
+    return table_size;
 }

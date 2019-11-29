@@ -92,12 +92,13 @@ void print_tree(tree_t tree, bool is_balanced)
 void print_results(const int tree_size,
     int64_t std_tree_time, int64_t avl_tree_time, int64_t hash_table_time,
     int std_tree_compare, int balanced_tree_compare, int64_t table1_time,
-    int64_t table2_time)
+    int64_t table2_time, const int table_size, int64_t file_time)
 {
     printf("\n==============================================================");
     printf("\nВремя добавления в обычное ДДП: %"PRId64" тиков\n", std_tree_time);
     printf("Время добавления в АВЛ дерево: %"PRId64" тиков\n", avl_tree_time);
-    printf("Время добавления в хеш-таблицу: %"PRId64" тиков\n\n", hash_table_time);
+    printf("Время добавления в хеш-таблицу: %"PRId64" тиков\n", hash_table_time);
+    printf("Время добавления в файл: %"PRId64" тиков\n\n", file_time);
     printf("Время формирования хеш-таблицы хешированием №1: %"PRId64"\n", table1_time);
     if (table2_time != -1)
     {
@@ -108,7 +109,7 @@ void print_results(const int tree_size,
     printf("\nРазмер памяти занимаемый обоими деревьями одинаковый: %lu байт\n",
         sizeof(vertex_t) * tree_size);
     printf("Размер памяти занимаемый хеш таблицей: %lu байт\n",
-        sizeof(hash_node_t) * tree_size);
+        sizeof(hash_node_t) * table_size);
 }
 
 void print_hash_table(table_t table)

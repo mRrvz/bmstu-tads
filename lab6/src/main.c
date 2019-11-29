@@ -2,6 +2,7 @@
 
 #include "../headers/tree_interfaces.h"
 #include "../headers/hash_interfaces.h"
+#include "../headers/file_interfaces.h"
 #include "../headers/read.h"
 #include "../headers/print.h"
 #include "../headers/struct.h"
@@ -9,6 +10,7 @@
 
 #define OK 0
 #define FILE_ERROR 1
+#define UPD_COEFF 0.82
 
 #define N 100
 
@@ -23,7 +25,7 @@ int main(int argc, char *argv[])
     char word_to_add[N];
     FILE *f;
 
-    if ((f = fopen(argv[1], "r")) == NULL)
+    if ((f = fopen(argv[1], "r+")) == NULL)
     {
         fprintf(stderr, "Ошибка при чтении файла\n");
         return FILE_ERROR;
@@ -70,7 +72,7 @@ int main(int argc, char *argv[])
     {
         fprintf(stdout, "%s", "\nКоличество сравнений превышает максимально указанное.\n"
         "Произведена реструктуризация хеш-таблицы\n");
-        table = create_hash_table(f, table_size, true, &table2_time);
+        table = create_hash_table(f, (int)(table.elements * UPD_COEFF), true, &table2_time);
         print_hash_table(table);
     }
 
@@ -85,7 +87,8 @@ int main(int argc, char *argv[])
     balanced_tree.total_compare = count_compares(f, balanced_tree);
 
     print_results(tree.size, std_tree_time, avl_tree_time, hash_table_time,
-        tree.total_compare, balanced_tree.total_compare, table1_time, table2_time);
+        tree.total_compare, balanced_tree.total_compare, table1_time, table2_time,
+        count_table_size(table), insertion_to_file(f, word_to_add));
     fclose(f);
 
     return OK;
