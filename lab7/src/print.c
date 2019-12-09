@@ -46,13 +46,12 @@ static void add_red_color(char *path)
 {
     if (path != NULL)
     {
-        //puts(path);
         while (*path++ != '\n');
         shift_string(--path);
     }
 }
 
-void print_path(char *graph_visual, char *path)
+static void print_path(char *graph_visual, char *path)
 {
     while (*path)
     {
@@ -70,10 +69,9 @@ void print_path(char *graph_visual, char *path)
         }
 
         buffer[i] = '\0';
-        add_red_color(strstr(graph_visual, buffer));
-        if (strstr(graph_visual, buffer) == NULL)
+        if (buffer[0] != '>')
         {
-            puts(buffer);
+            add_red_color(strstr(graph_visual, buffer));
         }
 
         space_count = 0;
@@ -91,7 +89,7 @@ void print_path(char *graph_visual, char *path)
 
 }
 
-void print_solution(char *solution_path)
+static void print_solution(char *solution_path)
 {
     FILE *f = fopen("graph.dot", "w");
     fprintf(f, "%s", solution_path);
@@ -103,14 +101,19 @@ void print_solution(char *solution_path)
 
 void paint_graphs(const graph_t graph, char *graph_visual, char *copy_graph_visual, const int start)
 {
-    for (int j = start; j < graph.size; j++)
+    for (int j = 0; j < graph.size; j++)
     {
         strcpy(copy_graph_visual, graph_visual);
         print_path(copy_graph_visual, graph.paths[j]);
-        graph.paths[j][0] = '\0';
+
+        if (graph.paths[j][0] != '\0')
+        {
+            printf("Путь: %s", graph.paths[j]);
+            graph.paths[j][0] = '\0';
+        }
+
         if (strcmp(copy_graph_visual, graph_visual))
         {
-            //puts(copy_graph_visual);
             print_solution(copy_graph_visual);
             memset(copy_graph_visual, 0, N * N);
         }

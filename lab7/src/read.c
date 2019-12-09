@@ -27,7 +27,10 @@ static int keyboard_read(const graph_t graph, FILE *f)
     while (i != -1 && j != -1 && scale != -1)
     {
         graph.matrix[i - 1][j - 1] = scale;
-        graph.matrix[j - 1][i - 1] = scale;
+        if (graph.matrix[j - 1][i - 1] == 0)
+        {
+            graph.matrix[j - 1][i - 1] = scale;
+        }
 
         if (fscanf(f, "%d %d %d", &i, &j, &scale) != 3)
         {

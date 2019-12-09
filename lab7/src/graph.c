@@ -39,7 +39,6 @@ static void save_path(graph_t graph, const int start_vertex, char *path)
             char buffer[10];
             sprintf(buffer, "%d ", i + 1);
             int j = i;
-            //printf("\n%d %d\nPath: %d ", i + 1, distance[i], i + 1);
 
             do
             {
