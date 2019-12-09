@@ -7,7 +7,7 @@
 
 int read_graph_size(int *size)
 {
-    fprintf(stdout, "%s", "Введите количество вершин в графе: ");
+    fprintf(stdout, "%s", "Введите количество городов: ");
 
     if (fscanf(stdin, "%d", size) != READ_OK)
     {
@@ -19,7 +19,7 @@ int read_graph_size(int *size)
 
 static int keyboard_read(const graph_t graph, FILE *f)
 {
-    fprintf(stdout, "%s\n", "Введите пары связанных вершин и весы для дуг, образуемых этими вершинами.\n"
+    fprintf(stdout, "%s\n", "Введите пары связанных городов (в виде цифр) и путь между ними.\n"
                             "Введите -1 -1 -1, как признак окончания ввода.");
 
     int i = 1, j = 1, scale = 0;
