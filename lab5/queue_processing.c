@@ -400,10 +400,5 @@ int queue_processing(queue_t *fst_queue, queue_t *snd_queue,
     *arr_time = real_time_array;
     *list_time = real_time_list;
 
-    if (fst_queue->avg_time / 0.3 > snd_queue->avg_time)
-    {
-        *downtime += SPR_FIX;
-    }
-
     return OK;
 }
