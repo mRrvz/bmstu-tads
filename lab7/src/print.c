@@ -108,7 +108,7 @@ void paint_graphs(const graph_t graph, char *graph_visual, char *copy_graph_visu
 
         if (graph.paths[j][0] != '\0')
         {
-            printf("Путь: %s", graph.paths[j]);
+            printf("Путь: %s\n", graph.paths[j]);
             graph.paths[j][0] = '\0';
         }
 
