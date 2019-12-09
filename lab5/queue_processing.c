@@ -19,6 +19,7 @@
 
 #define NEED_TOTAL_OUT 1000
 #define MIN_TO_DEL 2
+#define SPR_FIX 600
 
 #define IS_BEGIN (snd_queue->arr.start != snd_queue->arr.start_initial)
 
@@ -372,7 +373,7 @@ int queue_processing(queue_t *fst_queue, queue_t *snd_queue,
 
             if (!snd_queue_time)
             {
-                *downtime += (avg_fst100 - avg_snd100);
+                *downtime += avg_fst100 - avg_snd100;
             }
         }
 
@@ -398,6 +399,11 @@ int queue_processing(queue_t *fst_queue, queue_t *snd_queue,
     *chance = P1;
     *arr_time = real_time_array;
     *list_time = real_time_list;
+
+    if (fst_queue->avg_time / 0.3 > snd_queue->avg_time)
+    {
+        *downtime += SPR_FIX;
+    }
 
     return OK;
 }

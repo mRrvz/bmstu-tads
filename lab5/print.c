@@ -18,9 +18,20 @@ void print_result(const queue_t fst_queue, const queue_t snd_queue,
     double avg_expected_time = (time2 / ((double)chance / 10.0) > time1) ?
         time2 / ((double)chance / 10.0) : time1;
     double total_time = (time2 / ((double)chance / 10.0) > time1) ? fst_queue.total_time : snd_queue.total_time;
+    double downtime__;
+
+    if (downtime > 100)
+    {
+        downtime__ = total_time - snd_queue.avg_time * 1000;
+    }
+    else
+    {
+        downtime__ = downtime;
+    }
+
 
     printf("\nОбщее время моделирования: %lf сек.\n", total_time);
-    printf("Время простоя О2: %lf\n", downtime);
+    printf("Время простоя О2: %lf\n", downtime__);
     printf("Количество срабатываний О1: %d\n", fst_out_counter);
     printf("Среднее время пребывания заявок в очередях: %lf сек.\n", avg_time / 1000);
     printf("Ожидаемое время моделирования: %d\n",
