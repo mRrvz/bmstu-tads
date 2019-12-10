@@ -13,7 +13,7 @@ typedef struct graph
     char **paths;
 } graph_t;
 
-void deijkstra(graph_t graph, int start_vertex);
+int deijkstra(graph_t graph, int start_vertex);
 
 graph_t create_graph(int size);
 

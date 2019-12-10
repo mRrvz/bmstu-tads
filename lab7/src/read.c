@@ -36,6 +36,12 @@ static int keyboard_read(const graph_t graph, FILE *f)
         {
             return INVALID_INPUT;
         }
+
+        if (i > graph.size || i < 1 || j > graph.size || j < 1 || scale < 1)
+        {
+            fprintf(stderr, "%s\n", "Некорректный ввод.");
+            return INVALID_INPUT;
+        }
     }
 
     return OK;

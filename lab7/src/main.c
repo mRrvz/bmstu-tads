@@ -4,6 +4,7 @@
 
 #define OK 0
 #define FILE_ERROR 2
+#define GRAPH_ERROR 4
 
 #define N 10000
 
@@ -44,10 +45,24 @@ int main(int argc, char *argv[])
     char graph_visual[N];
     create_string_path(graph, graph_visual);
 
+    /*
+    for (int i = 0; i < graph.size; i++)
+    {
+        for (int j = 0; j < graph.size; j++)
+        {
+            printf("%d ", graph.matrix[i][j]);
+        }
+        putchar('\n');
+    }
+    */
 
     for (int i = 0; i < graph.size; i++)
     {
-        deijkstra(graph, i);
+        if (deijkstra(graph, i))
+        {
+            return GRAPH_ERROR;
+        }
+
         paint_graphs(graph, graph_visual, copy_graph_visual, i);
     }
 

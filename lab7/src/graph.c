@@ -2,6 +2,9 @@
 
 #define N 100
 
+#define OK 0
+#define GRAPH_ERROR 4
+
 static int min_distance(int *distance, char *is_visited, const int size)
 {
     int min = INT_MAX;
@@ -54,7 +57,7 @@ static void save_path(graph_t graph, const int start_vertex, char *path)
 
 }
 
-void deijkstra(graph_t graph, int start_vertex)
+int deijkstra(graph_t graph, int start_vertex)
 {
     int *distance = malloc(graph.size * sizeof(int));
     char *is_visited = malloc(graph.size * sizeof(char));
@@ -86,10 +89,20 @@ void deijkstra(graph_t graph, int start_vertex)
     }
 
     save_path(graph, start_vertex, path);
+    for (int i = 0; i < graph.size; i++)
+    {
+        if (distance[i] == INT_MAX)
+        {
+            fprintf(stderr, "Ошибка, граф не является связанным.\n");
+            return GRAPH_ERROR;
+        }
+    }
 
     free(distance);
     free(is_visited);
     free(path);
+
+    return OK;
 }
 
 graph_t create_graph(int size)
@@ -111,4 +124,3 @@ graph_t create_graph(int size)
 
     return graph;
 }
-
