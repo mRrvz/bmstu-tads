@@ -118,7 +118,7 @@ void print_hash_table(table_t table)
         "\nЯчейки без значения НЕ БУДУТ выведены на экран\n");
 
     fprintf(stdout, "Среднее количество сравнений для %d элементов хеш-таблицы: %lf\n",
-        table.size, (double)table.total_compare / table.size);
+        table.size, (double)table.total_compare / table.elements);
 
     for (int i = 0; i < table.size; i++)
     {
