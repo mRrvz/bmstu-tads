@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include "../headers/timer.h"
+#include "timer.h"
 
 int64_t insertion_to_file(FILE *f, char *string);
 

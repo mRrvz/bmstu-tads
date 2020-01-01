@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <inttypes.h>
 
-#include "../headers/timer.h"
+#include "../include/timer.h"
 
 uint64_t tick(void)
 {

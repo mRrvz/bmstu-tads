@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "../headers/print.h"
+#include "../include/print.h"
 
 #define ASCII_APOSTROPHE 39
 #define N 10000

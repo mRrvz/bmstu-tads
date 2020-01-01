@@ -1,6 +1,6 @@
-#include "../headers/graph.h"
-#include "../headers/read.h"
-#include "../headers/print.h"
+#include "../include/graph.h"
+#include "../include/read.h"
+#include "../include/print.h"
 
 #define OK 0
 #define FILE_ERROR 2

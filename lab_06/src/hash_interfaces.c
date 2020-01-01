@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../headers/hash_interfaces.h"
-#include "../headers/timer.h"
+#include "../include/hash_interfaces.h"
+#include "../include/timer.h"
 
 #define N 100
 

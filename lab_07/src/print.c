@@ -1,4 +1,4 @@
-#include "../headers/print.h"
+#include "../include/print.h"
 
 #define N 100
 

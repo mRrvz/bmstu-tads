@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "../headers/struct.h"
+#include "struct.h"
 
 bool check_repeats(const vertex_t *const vertex, char *string);
 

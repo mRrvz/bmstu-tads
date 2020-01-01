@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "../headers/read.h"
-#include "../headers/tree_interfaces.h"
+#include "../include/read.h"
+#include "../include/tree_interfaces.h"
 
 #define OK 0
 #define INVALID_INPUT 2

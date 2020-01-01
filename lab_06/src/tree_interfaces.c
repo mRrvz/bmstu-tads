@@ -3,8 +3,8 @@
 #include <math.h>
 #include <string.h>
 
-#include "../headers/tree_interfaces.h"
-#include "../headers/print.h"
+#include "../include/tree_interfaces.h"
+#include "../include/print.h"
 
 #define N 100
 

@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-#include "../headers/tree_interfaces.h"
-#include "../headers/hash_interfaces.h"
-#include "../headers/file_interfaces.h"
-#include "../headers/read.h"
-#include "../headers/print.h"
-#include "../headers/struct.h"
-#include "../headers/timer.h"
+#include "../include/tree_interfaces.h"
+#include "../include/hash_interfaces.h"
+#include "../include/file_interfaces.h"
+#include "../include/read.h"
+#include "../include/print.h"
+#include "../include/struct.h"
+#include "../include/timer.h"
 
 #define OK 0
 #define FILE_ERROR 1

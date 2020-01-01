@@ -1,4 +1,4 @@
-#include "../headers/graph.h"
+#include "../include/graph.h"
 
 #define N 100
 
